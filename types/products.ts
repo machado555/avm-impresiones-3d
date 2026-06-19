@@ -22,6 +22,7 @@ export type ProductVariant = {
   priceModifier?: number;
   stock?: number;
   color?: string;
+  material?: string;
   size?: string;
   finish?: string;
 };
