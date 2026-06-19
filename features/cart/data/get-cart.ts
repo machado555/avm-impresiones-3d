@@ -52,7 +52,7 @@ export async function getCart(): Promise<CartState> {
     imageUrl: item.product_image,
     quantity: item.quantity,
     unitPrice: Number(item.unit_price),
-    estimatedPoints: item.products?.points_reward ?? 0,
+    estimatedPoints: Array.isArray(item.products) ? (item.products[0]?.points_reward ?? 0) : (item.products?.points_reward ?? 0),
     variantSnapshot: item.variant_snapshot
   }));
   const totals = getCartTotals(items, cart.cart_discounts ?? []);
