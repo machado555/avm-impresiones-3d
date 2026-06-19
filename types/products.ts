@@ -19,10 +19,16 @@ export type ProductVariant = {
   id: string;
   name?: string;
   price?: number;
+  priceModifier?: number;
   stock?: number;
   color?: string;
   size?: string;
   finish?: string;
+};
+
+export type ProductImage = {
+  url: string;
+  alt?: string;
 };
 
 export type Product = {
@@ -31,9 +37,10 @@ export type Product = {
   slug: string;
   description?: string;
   price: number;
-  images?: string[];
+  images?: ProductImage[];
   category?: string;
   stock?: number;
   variants?: ProductVariant[];
+  pointsReward?: number;
   created_at?: string;
 };
