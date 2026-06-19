@@ -36,6 +36,7 @@ export type Product = {
   name: string;
   slug: string;
   description?: string;
+  shortDescription?: string;
   price: number;
   images?: ProductImage[];
   category?: string;
