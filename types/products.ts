@@ -1,5 +1,6 @@
 export type ProductFilters = {
   category?: string;
+  categorySlug?: string;
   minPrice?: number;
   maxPrice?: number;
   search?: string;
