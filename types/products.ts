@@ -55,5 +55,6 @@ export type Product = {
   stock?: number;
   variants?: ProductVariant[];
   pointsReward?: number;
+  points?: number;
   created_at?: string;
 };
