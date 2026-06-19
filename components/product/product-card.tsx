@@ -35,7 +35,7 @@ export function ProductCard({ name, category, price, points, description, produc
         imageUrl: image?.url ?? null,
         quantity: 1,
         unitPrice: product.price + (product.variants?.[0]?.priceModifier ?? 0),
-        estimatedPoints: product.pointsReward,
+        estimatedPoints: product.pointsReward ?? 0,
         variantSnapshot: product.variants?.[0] ? { ...product.variants[0], stock: maxStock } : { stock: maxStock }
       }
     : null;
