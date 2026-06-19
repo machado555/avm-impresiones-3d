@@ -15,7 +15,7 @@ export function CustomRequestForm({ contactName, contactEmail, contactPhone }: C
 
   return (
     <GlassCard>
-      <form action={createCustomRequest} className="grid gap-4">
+      <form action={async (formData: FormData) => { await createCustomRequest(formData); }} className="grid gap-4">
         <div className="grid gap-4 md:grid-cols-2">
           <input className={inputClass} name="contactName" placeholder="Nombre completo" defaultValue={contactName ?? ""} required />
           <input className={inputClass} name="contactEmail" placeholder="Email" type="email" defaultValue={contactEmail ?? ""} required />
