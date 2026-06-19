@@ -24,7 +24,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       description={category?.description ?? "Listado preparado para productos por categoria."}
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => (
+        {products.map((product: Awaited<ReturnType<typeof getProductsByCategory>>[number]) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
