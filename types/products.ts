@@ -5,6 +5,8 @@ export type ProductFilters = {
   materialSlug?: string;
   color?: string;
   size?: string;
+  finish?: string;
+  inStock?: boolean;
   minPrice?: number;
   maxPrice?: number;
   search?: string;
