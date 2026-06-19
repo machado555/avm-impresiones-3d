@@ -14,3 +14,15 @@ export type ProductFilters = {
   sort?: string;
   sortBy?: "price_asc" | "price_desc" | "newest" | "popular";
 };
+
+export type Product = {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  price: number;
+  images?: string[];
+  category?: string;
+  stock?: number;
+  created_at?: string;
+};
