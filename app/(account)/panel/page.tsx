@@ -10,6 +10,7 @@ export const metadata = {
 
 export default async function AccountPage() {
   const user = await requireAuth("/panel");
+  if (!user) return null;
   const stats = [
     { title: "Pedidos", value: "3 en historial", Icon: PackageCheck },
     { title: "Puntos", value: `${user?.pointsBalance ?? 0} disponibles`, Icon: Star },
