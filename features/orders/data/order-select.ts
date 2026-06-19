@@ -1,0 +1,31 @@
+export const orderSelect = `
+  id,
+  cart_id,
+  order_number,
+  status,
+  payment_status,
+  currency,
+  subtotal,
+  discounts,
+  shipping,
+  total,
+  estimated_points,
+  delivery_method,
+  notes,
+  contact_snapshot,
+  shipping_snapshot,
+  points_awarded_at,
+  created_at,
+  order_items (
+    id,
+    product_id,
+    variant_id,
+    quantity,
+    unit_price,
+    product_name,
+    product_slug,
+    product_image,
+    variant_snapshot,
+    created_at
+  )
+`;
