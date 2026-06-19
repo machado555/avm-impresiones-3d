@@ -15,6 +15,16 @@ export type ProductFilters = {
   sortBy?: "price_asc" | "price_desc" | "newest" | "popular";
 };
 
+export type ProductVariant = {
+  id: string;
+  name?: string;
+  price?: number;
+  stock?: number;
+  color?: string;
+  size?: string;
+  finish?: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -24,5 +34,6 @@ export type Product = {
   images?: string[];
   category?: string;
   stock?: number;
+  variants?: ProductVariant[];
   created_at?: string;
 };
