@@ -4,5 +4,6 @@ export type ProductFilters = {
   maxPrice?: number;
   search?: string;
   query?: string;
+  sort?: string;
   sortBy?: "price_asc" | "price_desc" | "newest" | "popular";
 };
