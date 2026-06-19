@@ -33,6 +33,15 @@ export type ProductImage = {
   alt?: string;
 };
 
+export type ProductCategory = {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  image?: string;
+  productCount?: number;
+};
+
 export type Product = {
   id: string;
   name: string;
