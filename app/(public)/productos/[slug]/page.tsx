@@ -54,7 +54,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     imageUrl: primaryImage?.url ?? null,
     quantity: 1,
     unitPrice: product.price + (selectedVariant?.priceModifier ?? 0),
-    estimatedPoints: product.pointsReward,
+    estimatedPoints: product.pointsReward ?? 0,
     variantSnapshot: selectedVariant ? { ...selectedVariant, stock: maxStock } : { stock: maxStock }
   };
 
