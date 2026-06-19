@@ -43,7 +43,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   const [relatedProducts, user, favorite] = await Promise.all([getRelatedProducts(product), getCurrentProfile(), isFavorite(product.id)]);
   const selectedVariant = product.variants?.[0] ?? null;
-  const maxStock = selectedVariant?.stock ?? product.stock;
+  const maxStock = selectedVariant?.stock ?? product.stock ?? 0;
   const primaryImage = product.images?.[0];
   const guestItem = {
     id: `${product.id}:${selectedVariant?.id ?? "base"}`,
