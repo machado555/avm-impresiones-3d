@@ -12,7 +12,7 @@ export default async function AccountPage() {
   const user = await requireAuth("/panel");
   const stats = [
     { title: "Pedidos", value: "3 en historial", Icon: PackageCheck },
-    { title: "Puntos", value: `${user.pointsBalance} disponibles`, Icon: Star },
+    { title: "Puntos", value: `${user?.pointsBalance ?? 0} disponibles`, Icon: Star },
     { title: "Recompensas", value: "2 canjeables", Icon: Gift }
   ];
 
