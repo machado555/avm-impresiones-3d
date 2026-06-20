@@ -12,7 +12,7 @@ export function OrderItemsList({ items }: OrderItemsListProps) {
       {items.map((item) => (
         <div key={item.id} className="grid grid-cols-[64px_1fr_auto] gap-3 rounded-[8px] border border-white/10 bg-white/[0.05] p-3">
           <div className="relative h-16 w-16 overflow-hidden rounded-[8px] bg-white/10">
-            {item.productImage && <Image src={item.productImage} alt={item.productName} fill className="object-cover" sizes="64px" />}
+            {item.productImage && <Image src={item.productImage} alt={item.productName ?? ""} fill className="objec...
           </div>
           <div>
             <Link href={`/productos/${item.productSlug}`} className="font-semibold text-white hover:text-cyan-200">{item.productName}</Link>
