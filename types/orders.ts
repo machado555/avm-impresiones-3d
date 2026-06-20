@@ -10,16 +10,20 @@ export type OrderStatus =
 
 export type OrderItem = {
   id: string;
-  orderId: string;
+  orderId?: string;
   productId: string;
   variantId?: string | null;
-  name: string;
-  slug: string;
+  name?: string;
+  productName?: string;
+  slug?: string;
+  productSlug?: string;
   imageUrl?: string | null;
+  productImage?: string | null;
   quantity: number;
   unitPrice: number;
-  subtotal: number;
+  subtotal?: number;
   variantSnapshot?: Record<string, unknown> | null;
+  createdAt?: string;
 };
 
 export type Order = {
