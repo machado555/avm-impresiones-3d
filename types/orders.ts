@@ -68,6 +68,15 @@ export type OrderDetail = {
   events?: OrderEvent[];
 };
 
+export type OrderSummary = {
+  id: string;
+  orderNumber: string;
+  status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  total: number;
+  createdAt?: string;
+};
+
 export type Order = {
   id: string;
   userId?: string;
