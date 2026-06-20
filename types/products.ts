@@ -1,3 +1,5 @@
+export type ProductStatus = "active" | "inactive" | "draft";
+
 export type ProductFilters = {
   category?: string;
   categorySlug?: string;
@@ -67,7 +69,7 @@ export type Product = {
   weightGrams?: number | null;
   estimatedPrintTime?: number | null;
   stock?: number;
-  status?: "active" | "inactive" | "draft";
+  status?: ProductStatus;
   isFeatured?: boolean;
   isCustomizable?: boolean;
   allowFileUpload?: boolean;
