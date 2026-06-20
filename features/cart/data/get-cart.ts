@@ -5,11 +5,9 @@ import type { CartItem, CartState } from "@/types/cart";
 
 export async function getCart(): Promise<CartState> {
   const user = await getCurrentProfile();
-
   if (!user) {
     return emptyGuestCart();
   }
-
   const supabase = await createSupabaseServerClient();
   const { data: cart } = await supabase
     .from("carts")
@@ -38,25 +36,28 @@ export async function getCart(): Promise<CartState> {
     .eq("user_id", user.id)
     .eq("status", "active")
     .maybeSingle();
-
   if (!cart) {
     return emptyAuthenticatedCart();
   }
-
-  const items: CartItem[] = (cart.cart_items ?? []).map((item) => ({
-    id: item.id,
-    productId: item.product_id,
-    variantId: item.variant_id,
-    name: item.product_name,
-    slug: item.product_slug,
-    imageUrl: item.product_image,
-    quantity: item.quantity,
-    unitPrice: Number(item.unit_price),
-    estimatedPoints: Array.isArray(item.products) ? (item.products[0]?.points_reward ?? 0) : (item.products?.points_reward ?? 0),
-    variantSnapshot: item.variant_snapshot
-  }));
+  const items: CartItem[] = (cart.cart_items ?? []).map((item) => {
+    const products = item.products as { points_reward?: number } | { points_reward?: number }[] | null;
+    const pointsReward = Array.isArray(products)
+      ? (products[0]?.points_reward ?? 0)
+      : (products?.points_reward ?? 0);
+    return {
+      id: item.id,
+      productId: item.product_id,
+      variantId: item.variant_id,
+      name: item.product_name,
+      slug: item.product_slug,
+      imageUrl: item.product_image,
+      quantity: item.quantity,
+      unitPrice: Number(item.unit_price),
+      estimatedPoints: pointsReward,
+      variantSnapshot: item.variant_snapshot
+    };
+  });
   const totals = getCartTotals(items, cart.cart_discounts ?? []);
-
   return {
     id: cart.id,
     mode: "authenticated",
