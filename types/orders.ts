@@ -8,6 +8,20 @@ export type OrderStatus =
   | "delivered"
   | "cancelled";
 
+export type OrderItem = {
+  id: string;
+  orderId: string;
+  productId: string;
+  variantId?: string | null;
+  name: string;
+  slug: string;
+  imageUrl?: string | null;
+  quantity: number;
+  unitPrice: number;
+  subtotal: number;
+  variantSnapshot?: Record<string, unknown> | null;
+};
+
 export type Order = {
   id: string;
   userId: string;
@@ -19,6 +33,7 @@ export type Order = {
   shipping: number;
   estimatedPoints: number;
   notes?: string | null;
+  items?: OrderItem[];
   createdAt?: string;
   updatedAt?: string;
 };
