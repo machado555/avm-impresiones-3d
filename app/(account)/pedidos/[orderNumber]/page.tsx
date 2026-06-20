@@ -36,7 +36,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           <GlassCard>
             <h2 className="text-lg font-semibold text-white">Items</h2>
             <div className="mt-5">
-              <OrderItemsList items={order.items} />
+              <OrderItemsList items={order.items ?? []} />
             </div>
           </GlassCard>
           <GlassCard>
