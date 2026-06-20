@@ -7,7 +7,7 @@ export function CheckoutConfirmation() {
       <p className="text-sm leading-6 text-slate-300">
         Al confirmar se creara un pedido pendiente de pago. Mercado Pago se integrara en una etapa posterior.
       </p>
-      <Button formAction={createOrderFromCart} className="mt-4 w-full">
+      <Button formAction={async (formData: FormData) => { await createOrderFromCart(formData); }} className="mt-4 w-full">
         Confirmar pedido
       </Button>
     </div>
