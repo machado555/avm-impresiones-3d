@@ -20,6 +20,8 @@ export type OrderEvent = {
   orderId: string;
   event: string;
   status: OrderStatus;
+  actorType?: string | null;
+  actorId?: string | null;
   note?: string | null;
   createdAt?: string;
 };
