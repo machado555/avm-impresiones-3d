@@ -8,6 +8,13 @@ export type OrderStatus =
   | "delivered"
   | "cancelled";
 
+export type PaymentStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "refunded"
+  | "cancelled";
+
 export type OrderItem = {
   id: string;
   orderId?: string;
@@ -30,6 +37,7 @@ export type Order = {
   id: string;
   userId: string;
   status: OrderStatus;
+  paymentStatus?: PaymentStatus;
   deliveryMethod: DeliveryMethod;
   total: number;
   subtotal: number;
