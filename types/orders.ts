@@ -18,6 +18,7 @@ export type PaymentStatus =
 export type OrderEvent = {
   id: string;
   orderId: string;
+  event: string;
   status: OrderStatus;
   note?: string | null;
   createdAt?: string;
