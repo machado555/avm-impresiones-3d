@@ -14,7 +14,7 @@ export function OrderTimeline({ events }: OrderTimelineProps) {
       {events.map((event) => (
         <div key={event.id} className="rounded-[8px] border border-white/10 bg-white/[0.05] p-3">
           <p className="text-sm font-semibold text-white">{event.event.replaceAll("_", " ")}</p>
-          <p className="mt-1 text-xs text-slate-500">{new Date(event.createdAt).toLocaleString("es-AR")} · {event.actorType}</p>
+          <p className="mt-1 text-xs text-slate-500">{event.createdAt ? new Date(event.createdAt).toLocaleString("es-AR") : ""} S· {event.actorType}</p>
         </div>
       ))}
     </div>
