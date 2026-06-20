@@ -19,9 +19,10 @@ export type OrderEvent = {
   id: string;
   orderId: string;
   event: string;
-  status: OrderStatus;
+  status?: OrderStatus;
   actorType?: string | null;
   actorId?: string | null;
+  metadata?: Record<string, unknown>;
   note?: string | null;
   createdAt?: string;
 };
@@ -29,7 +30,7 @@ export type OrderEvent = {
 export type OrderItem = {
   id: string;
   orderId?: string;
-  productId: string;
+  productId?: string | null;
   variantId?: string | null;
   name?: string;
   productName?: string;
@@ -44,12 +45,36 @@ export type OrderItem = {
   createdAt?: string;
 };
 
+export type OrderDetail = {
+  id: string;
+  cartId?: string | null;
+  orderNumber: string;
+  status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  currency?: string;
+  subtotal: number;
+  discounts: number;
+  shipping: number;
+  total: number;
+  estimatedPoints: number;
+  deliveryMethod: DeliveryMethod;
+  notes?: string | null;
+  contactSnapshot?: Record<string, unknown>;
+  shippingSnapshot?: Record<string, unknown>;
+  pointsAwardedAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  items?: OrderItem[];
+  events?: OrderEvent[];
+};
+
 export type Order = {
   id: string;
-  userId: string;
+  userId?: string;
+  orderNumber?: string;
   status: OrderStatus;
   paymentStatus?: PaymentStatus;
-  deliveryMethod: DeliveryMethod;
+  deliveryMethod?: DeliveryMethod;
   total: number;
   subtotal: number;
   discounts: number;
