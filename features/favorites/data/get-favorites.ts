@@ -11,10 +11,14 @@ export async function getFavorites() {
     .select(`product_id, created_at, updated_at, products (${productSelect})`)
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
-
   if (error || !data) {
     return [];
   }
-
-  return data.flatMap((favorite) => (favorite.products ? [mapProduct(favorite.products)] : []));
+  return data.flatMap((favorite) => {
+    const products = favorite.products;
+    if (!products) return [];
+    const row = Array.isArray(products) ? products[0] : products;
+    if (!row) return [];
+    return [mapProduct(row as any)];
+  });
 }
