@@ -15,6 +15,14 @@ export type PaymentStatus =
   | "refunded"
   | "cancelled";
 
+export type OrderEvent = {
+  id: string;
+  orderId: string;
+  status: OrderStatus;
+  note?: string | null;
+  createdAt?: string;
+};
+
 export type OrderItem = {
   id: string;
   orderId?: string;
@@ -46,6 +54,7 @@ export type Order = {
   estimatedPoints: number;
   notes?: string | null;
   items?: OrderItem[];
+  events?: OrderEvent[];
   createdAt?: string;
   updatedAt?: string;
 };
