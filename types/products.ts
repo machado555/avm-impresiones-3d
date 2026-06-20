@@ -17,20 +17,32 @@ export type ProductFilters = {
 
 export type ProductVariant = {
   id: string;
+  productId?: string;
+  sku?: string | null;
   name?: string;
   price?: number;
   priceModifier?: number;
   stock?: number;
-  color?: string;
-  material?: string;
-  size?: string;
-  finish?: string;
+  active?: boolean;
+  color?: string | null;
+  material?: string | null;
+  size?: string | null;
+  finish?: string | null;
 };
 
 export type ProductImage = {
   id?: string;
+  productId?: string;
+  variantId?: string | null;
   url: string;
-  alt?: string;
+  alt?: string | null;
+  sortOrder?: number;
+};
+
+export type ProductTag = {
+  id: string;
+  name: string;
+  slug: string;
 };
 
 export type ProductCategory = {
@@ -44,17 +56,30 @@ export type ProductCategory = {
 
 export type Product = {
   id: string;
+  categoryId?: string | null;
   name: string;
   slug: string;
-  description?: string;
-  shortDescription?: string;
+  description?: string | null;
+  shortDescription?: string | null;
   price: number;
-  compareAtPrice?: number;
-  images?: ProductImage[];
-  category?: string;
+  compareAtPrice?: number | null;
+  sku?: string | null;
+  weightGrams?: number | null;
+  estimatedPrintTime?: number | null;
   stock?: number;
-  variants?: ProductVariant[];
+  status?: "active" | "inactive" | "draft";
+  isFeatured?: boolean;
+  isCustomizable?: boolean;
+  allowFileUpload?: boolean;
   pointsReward?: number;
   points?: number;
+  brand?: string | null;
+  gtin?: string | null;
+  mpn?: string | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  images?: ProductImage[];
+  variants?: ProductVariant[];
+  tags?: ProductTag[];
   created_at?: string;
 };
