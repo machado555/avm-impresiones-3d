@@ -1,99 +1,88 @@
-export type DeliveryMethod = "pickup" | "delivery" | "shipping";
+export type ProductStatus = "active" | "inactive" | "draft";
 
-export type OrderStatus =
-  | "pending"
-  | "confirmed"
-  | "in_production"
-  | "ready"
-  | "delivered"
-  | "cancelled";
-
-export type PaymentStatus =
-  | "pending"
-  | "approved"
-  | "rejected"
-  | "refunded"
-  | "cancelled";
-
-export type OrderEventActorType = "customer" | "admin" | "system";
-
-export type OrderEvent = {
-  id: string;
-  orderId: string;
-  event: string;
-  status?: OrderStatus;
-  actorType?: OrderEventActorType | string | null;
-  actorId?: string | null;
-  metadata?: Record<string, unknown>;
-  note?: string | null;
-  createdAt?: string;
+export type ProductFilters = {
+  category?: string;
+  categorySlug?: string;
+  tagSlug?: string;
+  materialSlug?: string;
+  color?: string;
+  size?: string;
+  finish?: string;
+  inStock?: boolean;
+  isFeatured?: boolean;
+  minPrice?: number;
+  maxPrice?: number;
+  search?: string;
+  query?: string;
+  sort?: string;
+  sortBy?: "price_asc" | "price_desc" | "newest" | "popular";
 };
 
-export type OrderItem = {
+export type ProductVariant = {
   id: string;
-  orderId?: string;
-  productId?: string | null;
-  variantId?: string | null;
+  productId?: string;
+  sku?: string | null;
   name?: string;
-  productName?: string;
-  slug?: string;
-  productSlug?: string;
-  imageUrl?: string | null;
-  productImage?: string | null;
-  quantity: number;
-  unitPrice: number;
-  subtotal?: number;
-  variantSnapshot?: Record<string, unknown> | null;
-  createdAt?: string;
+  price?: number;
+  priceModifier?: number;
+  stock?: number;
+  active?: boolean;
+  color?: string | null;
+  material?: string | null;
+  size?: string | null;
+  finish?: string | null;
 };
 
-export type OrderDetail = {
-  id: string;
-  cartId?: string | null;
-  orderNumber: string;
-  status: OrderStatus;
-  paymentStatus: PaymentStatus;
-  currency?: string;
-  subtotal: number;
-  discounts: number;
-  shipping: number;
-  total: number;
-  estimatedPoints: number;
-  deliveryMethod: DeliveryMethod;
-  notes?: string | null;
-  contactSnapshot?: Record<string, unknown>;
-  shippingSnapshot?: Record<string, unknown>;
-  pointsAwardedAt?: string | null;
-  createdAt?: string;
-  updatedAt?: string;
-  items?: OrderItem[];
-  events?: OrderEvent[];
+export type ProductImage = {
+  id?: string;
+  productId?: string;
+  variantId?: string | null;
+  url: string;
+  alt?: string | null;
+  sortOrder?: number;
 };
 
-export type OrderSummary = {
+export type ProductTag = {
   id: string;
-  orderNumber: string;
-  status: OrderStatus;
-  paymentStatus: PaymentStatus;
-  total: number;
-  createdAt?: string;
+  name: string;
+  slug: string;
 };
 
-export type Order = {
+export type ProductCategory = {
   id: string;
-  userId?: string;
-  orderNumber?: string;
-  status: OrderStatus;
-  paymentStatus?: PaymentStatus;
-  deliveryMethod?: DeliveryMethod;
-  total: number;
-  subtotal: number;
-  discounts: number;
-  shipping: number;
-  estimatedPoints: number;
-  notes?: string | null;
-  items?: OrderItem[];
-  events?: OrderEvent[];
-  createdAt?: string;
-  updatedAt?: string;
+  name: string;
+  slug: string;
+  description?: string;
+  image?: string;
+  productCount?: number;
+};
+
+export type Product = {
+  id: string;
+  categoryId?: string | null;
+  name: string;
+  slug: string;
+  description?: string | null;
+  shortDescription?: string | null;
+  price: number;
+  compareAtPrice?: number | null;
+  sku?: string | null;
+  weightGrams?: number | null;
+  estimatedPrintTime?: number | null;
+  stock?: number;
+  status?: ProductStatus;
+  isFeatured?: boolean;
+  isCustomizable?: boolean;
+  allowFileUpload?: boolean;
+  pointsReward?: number;
+  points?: number;
+  brand?: string | null;
+  gtin?: string | null;
+  mpn?: string | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  images?: ProductImage[];
+  variants?: ProductVariant[];
+  tags?: ProductTag[];
+  created_at?: string;
 };
