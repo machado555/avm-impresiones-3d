@@ -55,7 +55,7 @@ export async function getProducts(filters: ProductFilters = {}) {
     return [];
   }
 
-  let products = data.map(mapProduct);
+  let products = data.map((row) => mapProduct(row as any));
 
   if (filters.tagSlug) {
     products = products.filter((product) => product.tags?.some((tag) => tag.slug === filters.tagSlug));
