@@ -36,5 +36,5 @@ export async function getProductsByCategory(categorySlug: string, filters: Produ
     return [];
   }
 
-  return data.map(mapProduct);
+  return data.map((row) => mapProduct(row as any));
 }
