@@ -15,12 +15,14 @@ export type PaymentStatus =
   | "refunded"
   | "cancelled";
 
+export type OrderEventActorType = "customer" | "admin" | "system";
+
 export type OrderEvent = {
   id: string;
   orderId: string;
   event: string;
   status?: OrderStatus;
-  actorType?: string | null;
+  actorType?: OrderEventActorType | string | null;
   actorId?: string | null;
   metadata?: Record<string, unknown>;
   note?: string | null;
