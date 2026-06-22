@@ -10,10 +10,8 @@ export async function getProductBySlug(slug: string) {
     .eq("slug", slug)
     .eq("status", "active")
     .single();
-
   if (error || !data) {
     return null;
   }
-
-  return mapProduct(data);
+  return mapProduct(data as any);
 }
