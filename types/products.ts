@@ -9,6 +9,7 @@ export type ProductFilters = {
   size?: string;
   finish?: string;
   inStock?: boolean;
+  isFeatured?: boolean;
   minPrice?: number;
   maxPrice?: number;
   search?: string;
