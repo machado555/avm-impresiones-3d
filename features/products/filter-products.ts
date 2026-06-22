@@ -11,7 +11,7 @@ export function filterProducts(products: Product[], filters: ProductFilters) {
         }
       }
 
-      if (filters.inStock && product.stock <= 0) {
+      if (filters.inStock && (product.stock ?? 0) <= 0) {
         return false;
       }
 
