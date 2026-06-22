@@ -21,7 +21,7 @@ export function createProductJsonLd(product: Product, siteUrl: string) {
       "@type": "Offer",
       priceCurrency: "ARS",
       price: product.price,
-      availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+      availability: (product.stock ?? 0) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     }
   };
 }
