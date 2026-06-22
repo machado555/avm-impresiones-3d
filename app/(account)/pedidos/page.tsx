@@ -7,7 +7,6 @@ import { getOrders } from "@/features/orders/data/get-orders";
 
 export default async function OrdersPage() {
   const orders = await getOrders();
-
   return (
     <Section eyebrow="Mi cuenta" title="Historial de pedidos" description="Pedidos confirmados, estado de pago, timeline y puntos estimados.">
       {orders.length === 0 ? (
@@ -18,7 +17,7 @@ export default async function OrdersPage() {
             <GlassCard key={order.id} className="grid gap-4 md:grid-cols-[1fr_auto_auto] md:items-center">
               <div>
                 <p className="font-semibold text-white">{order.orderNumber}</p>
-                <p className="mt-1 text-sm text-slate-400">{order.createdAt ? new Date(order.createdAt).toLocaleDateString("es-AR") : ""}
+                <p className="mt-1 text-sm text-slate-400">{order.createdAt ? new Date(order.createdAt).toLocaleDateString("es-AR") : ""}</p>
               </div>
               <div className="flex flex-wrap gap-2">
                 <OrderStatusBadge status={order.status} />
