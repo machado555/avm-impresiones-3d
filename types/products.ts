@@ -50,10 +50,14 @@ export type ProductTag = {
 
 export type ProductCategory = {
   id: string;
+  parentId?: string | null;
   name: string;
   slug: string;
-  description?: string;
-  image?: string;
+  description?: string | null;
+  image?: string | null;
+  imageUrl?: string | null;
+  sortOrder?: number;
+  isActive?: boolean;
   productCount?: number;
 };
 
