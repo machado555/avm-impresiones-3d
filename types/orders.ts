@@ -1,88 +1,99 @@
-export type ProductStatus = "active" | "inactive" | "draft";
+export type DeliveryMethod = "pickup" | "delivery" | "shipping";
 
-export type ProductFilters = {
-  category?: string;
-  categorySlug?: string;
-  tagSlug?: string;
-  materialSlug?: string;
-  color?: string;
-  size?: string;
-  finish?: string;
-  inStock?: boolean;
-  isFeatured?: boolean;
-  minPrice?: number;
-  maxPrice?: number;
-  search?: string;
-  query?: string;
-  sort?: string;
-  sortBy?: "price_asc" | "price_desc" | "newest" | "popular";
-};
+export type OrderStatus =
+  | "pending"
+  | "confirmed"
+  | "in_production"
+  | "ready"
+  | "delivered"
+  | "cancelled";
 
-export type ProductVariant = {
+export type PaymentStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "refunded"
+  | "cancelled";
+
+export type OrderEventActorType = "customer" | "admin" | "system";
+
+export type OrderEvent = {
   id: string;
-  productId?: string;
-  sku?: string | null;
-  name?: string;
-  price?: number;
-  priceModifier?: number;
-  stock?: number;
-  active?: boolean;
-  color?: string | null;
-  material?: string | null;
-  size?: string | null;
-  finish?: string | null;
+  orderId: string;
+  event: string;
+  status?: OrderStatus;
+  actorType?: OrderEventActorType | string | null;
+  actorId?: string | null;
+  metadata?: Record<string, unknown>;
+  note?: string | null;
+  createdAt?: string;
 };
 
-export type ProductImage = {
-  id?: string;
-  productId?: string;
+export type OrderItem = {
+  id: string;
+  orderId?: string;
+  productId?: string | null;
   variantId?: string | null;
-  url: string;
-  alt?: string | null;
-  sortOrder?: number;
+  name?: string;
+  productName?: string;
+  slug?: string;
+  productSlug?: string;
+  imageUrl?: string | null;
+  productImage?: string | null;
+  quantity: number;
+  unitPrice: number;
+  subtotal?: number;
+  variantSnapshot?: Record<string, unknown> | null;
+  createdAt?: string;
 };
 
-export type ProductTag = {
+export type OrderDetail = {
   id: string;
-  name: string;
-  slug: string;
+  cartId?: string | null;
+  orderNumber: string;
+  status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  currency?: string;
+  subtotal: number;
+  discounts: number;
+  shipping: number;
+  total: number;
+  estimatedPoints: number;
+  deliveryMethod: DeliveryMethod;
+  notes?: string | null;
+  contactSnapshot?: Record<string, unknown>;
+  shippingSnapshot?: Record<string, unknown>;
+  pointsAwardedAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  items?: OrderItem[];
+  events?: OrderEvent[];
 };
 
-export type ProductCategory = {
+export type OrderSummary = {
   id: string;
-  name: string;
-  slug: string;
-  description?: string;
-  image?: string;
-  productCount?: number;
+  orderNumber: string;
+  status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  total: number;
+  createdAt?: string;
 };
 
-export type Product = {
+export type Order = {
   id: string;
-  categoryId?: string | null;
-  name: string;
-  slug: string;
-  description?: string | null;
-  shortDescription?: string | null;
-  price: number;
-  compareAtPrice?: number | null;
-  sku?: string | null;
-  weightGrams?: number | null;
-  estimatedPrintTime?: number | null;
-  stock?: number;
-  status?: ProductStatus;
-  isFeatured?: boolean;
-  isCustomizable?: boolean;
-  allowFileUpload?: boolean;
-  pointsReward?: number;
-  points?: number;
-  brand?: string | null;
-  gtin?: string | null;
-  mpn?: string | null;
-  seoTitle?: string | null;
-  seoDescription?: string | null;
-  images?: ProductImage[];
-  variants?: ProductVariant[];
-  tags?: ProductTag[];
-  created_at?: string;
+  userId?: string;
+  orderNumber?: string;
+  status: OrderStatus;
+  paymentStatus?: PaymentStatus;
+  deliveryMethod?: DeliveryMethod;
+  total: number;
+  subtotal: number;
+  discounts: number;
+  shipping: number;
+  estimatedPoints: number;
+  notes?: string | null;
+  items?: OrderItem[];
+  events?: OrderEvent[];
+  createdAt?: string;
+  updatedAt?: string;
 };
