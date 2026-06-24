@@ -1,4 +1,5 @@
 "use server";
+
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createClient } from "@supabase/supabase-js";
@@ -26,15 +27,19 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
-  const { data: profile } = await adminClient
+  const { data: profile, error: profileError } = await adminClient
     .from("profiles")
     .select("role,status,is_active")
     .eq("id", data.user.id)
     .single();
 
+  if (profileError) {
+    return { status: "error", message: `DEBUG profileError: ${profileError.message} | code: ${profileError.code}` };
+  }
+
   if (!profile || profile.status !== "active" || !profile.is_active) {
     await supabase.auth.signOut();
-    return { status: "error", message: "La cuenta no esta activa." };
+    return { status: "error", message: `DEBUG: profile=${JSON.stringify(profile)}` };
   }
 
   await adminClient.from("profiles").update({ last_login_at: new Date().toISOString() }).eq("id", data.user.id);
@@ -42,6 +47,5 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
   if (profile.role === "admin" || profile.role === "superadmin") {
     redirect(redirectTo.startsWith("/admin") ? redirectTo : "/admin");
   }
-
   redirect(redirectTo);
 }
