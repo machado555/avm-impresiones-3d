@@ -1,4 +1,4 @@
-export type OrderEventActorType = "customer" | "admin" | "system" | "guest";
+export type DeliveryMethod = "pickup" | "delivery" | "shipping";
 
 export type OrderStatus =
   | "pending"
@@ -15,7 +15,7 @@ export type PaymentStatus =
   | "refunded"
   | "cancelled";
 
-export type OrderEventActorType = "customer" | "admin" | "system";
+export type OrderEventActorType = "customer" | "admin" | "system" | "guest";
 
 export type OrderEvent = {
   id: string;
