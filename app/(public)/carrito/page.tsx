@@ -15,7 +15,7 @@ export default async function CartPage() {
   const cart = await getCart();
 
   return (
-    <Section eyebrow="Compra" title="Carrito" description="Carrito persistente preparado para pedidos, cupones, puntos, checkout y Mercado Pago.">
+    <Section eyebrow="Compra" title="Carrito" description="Revisa los productos que agregaste antes de continuar.">
       <CartStoreSync cart={cart} />
       {cart.mode === "guest" ? (
         <GuestCartPage />

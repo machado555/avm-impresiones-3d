@@ -1,3 +1,6 @@
+"use client";
+
+import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { createCustomRequest } from "@/features/custom-requests/actions/create-custom-request";
@@ -11,11 +14,18 @@ type CustomRequestFormProps = {
 };
 
 export function CustomRequestForm({ contactName, contactEmail, contactPhone }: CustomRequestFormProps) {
+  const [state, formAction, isPending] = useActionState(
+    async (_prev: { ok: boolean; message: string } | null, formData: FormData) => {
+      return await createCustomRequest(formData);
+    },
+    null
+  );
+
   const inputClass = "w-full rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60";
 
   return (
     <GlassCard>
-      <form action={async (formData: FormData) => { await createCustomRequest(formData); }} className="grid gap-4">
+      <form action={formAction} className="grid gap-4">
         <div className="grid gap-4 md:grid-cols-2">
           <input className={inputClass} name="contactName" placeholder="Nombre completo" defaultValue={contactName ?? ""} required />
           <input className={inputClass} name="contactEmail" placeholder="Email" type="email" defaultValue={contactEmail ?? ""} required />
@@ -49,6 +59,9 @@ export function CustomRequestForm({ contactName, contactEmail, contactPhone }: C
         <input className={inputClass} name="estimatedDate" type="date" />
         <textarea className={`${inputClass} min-h-28 resize-y`} name="notes" placeholder="Observaciones" />
         <CustomRequestFilesField />
+        {state && !state.ok && (
+          <p className="text-sm text-red-300">{state.message}</p>
+        )}
         <div className="grid gap-3 text-sm leading-6 text-slate-300">
           <label>
             <input name="privacyAccepted" type="checkbox" required className="mr-2" />
@@ -63,7 +76,7 @@ export function CustomRequestForm({ contactName, contactEmail, contactPhone }: C
             Declaro que poseo los derechos sobre los archivos enviados y autorizo a AVM-Impresiones 3D a utilizarlos exclusivamente para la cotización y fabricación solicitada.
           </label>
         </div>
-        <Button type="submit">Enviar solicitud</Button>
+        <Button type="submit" disabled={isPending}>{isPending ? "Enviando..." : "Enviar solicitud"}</Button>
       </form>
     </GlassCard>
   );

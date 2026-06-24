@@ -30,7 +30,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     <Section
       eyebrow="Tienda"
       title="Catalogo AVM"
-      description="Wireframe funcional del listado con zona para filtros, busqueda, ordenamiento, variantes y stock."
+      description="Explora nuestro catalogo de productos: impresiones 3D, electronica y mas."
       className="pt-12"
     >
       <div className="mb-6 grid gap-3 rounded-[8px] border border-white/10 bg-white/[0.06] p-4 md:grid-cols-[1fr_auto_auto]">

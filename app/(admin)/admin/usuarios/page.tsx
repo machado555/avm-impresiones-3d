@@ -8,7 +8,7 @@ export default async function AdminUsersPage() {
 
   return (
     <AdminShell>
-      <AdminSectionHeader title="Usuarios" description="Listado operativo preparado para roles, estados y permisos." />
+      <AdminSectionHeader title="Usuarios" description="Gestion de usuarios registrados en la plataforma." />
       <div className="grid gap-3">
         {users.map((user) => (
           <GlassCard key={user.id} className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center">

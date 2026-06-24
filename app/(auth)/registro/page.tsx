@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function RegisterPage() {
   return (
-    <Section eyebrow="Cuenta" title="Crear cuenta" description="Registro conectado con Supabase Auth y perfil customer.">
+    <Section eyebrow="Cuenta" title="Crear cuenta" description="Completa tus datos y empezá a disfrutar de todos los beneficios.">
       <RegisterForm />
     </Section>
   );

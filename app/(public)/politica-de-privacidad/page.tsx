@@ -13,8 +13,8 @@ export default function PrivacyPage() {
         <p>La informacion se utiliza exclusivamente para operar la tienda, responder consultas, procesar solicitudes y mejorar la experiencia del usuario.</p>
         <h2>Datos recopilados</h2>
         <p>Podemos solicitar nombre, email, telefono, archivos de referencia, datos de pedido y preferencias necesarias para prestar el servicio.</p>
-        <h2>Proveedor tecnologico</h2>
-        <p>La plataforma esta preparada para utilizar Supabase como proveedor de autenticacion, base de datos y almacenamiento.</p>
+        <h2>Seguridad de la informacion</h2>
+        <p>Tus datos personales se almacenan de forma segura con los mas altos estandares de proteccion y encriptacion.</p>
         <h2>Derechos del usuario</h2>
         <p>El usuario puede solicitar revision, actualizacion o eliminacion de sus datos mediante los canales de contacto publicados.</p>
       </GlassCard>

@@ -14,7 +14,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const description =
     params.reason === "inactive"
       ? "Tu cuenta no esta activa. Contacta a AVM para revisar el acceso."
-      : "Accede con Supabase Auth. Tu sesion queda persistida de forma segura.";
+      : "Ingresa tu correo y contraseña para acceder a tu cuenta.";
 
   return (
     <Section eyebrow="Cuenta" title="Iniciar sesion" description={description}>

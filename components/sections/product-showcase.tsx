@@ -18,7 +18,7 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
     <Section
       eyebrow="Destacados"
       title="Productos con estetica maker y terminacion premium"
-      description="Cards preparadas para imagenes desde Supabase Storage, variantes, stock, puntos y acciones de carrito."
+      description="Explora nuestra seleccion de productos destacados, desde piezas funcionales hasta diseños exclusivos."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {items.map((product, index) => {

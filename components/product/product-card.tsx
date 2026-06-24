@@ -40,12 +40,12 @@ export function ProductCard({ name, category, price, points, description, produc
       }
     : null;
 
-  const content = (
-    <GlassCard className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:border-cyan-300/40">
+  const cardContent = (
+    <>
       <div className="relative h-48 border-b border-white/10 bg-gradient-to-br from-white/12 via-cyan-300/12 to-violet-400/16">
         {image && <Image src={image.url} alt={image.alt ?? displayName} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />}
         {product && (
-          <div className="absolute right-3 top-3">
+          <div className="absolute right-3 top-3 z-20">
             <FavoriteButton productId={product.id} initialIsFavorite={isFavorite} isAuthenticated={isAuthenticated} />
           </div>
         )}
@@ -61,19 +61,34 @@ export function ProductCard({ name, category, price, points, description, produc
           </span>
         </div>
         {product && guestItem && (
-          <div className="mt-4">
+          <div className="relative z-20 mt-4">
             <AddToCartButton productId={product.id} variantId={guestItem.variantId} isAuthenticated={isAuthenticated} guestItem={guestItem} maxStock={maxStock} />
           </div>
         )}
       </div>
-    </GlassCard>
+    </>
   );
 
   if (product?.slug) {
-    return <div>{content}<Link className="sr-only" href={`/productos/${product.slug}`}>Ver {product.name}</Link></div>;
+    return (
+      <div className="relative">
+        <GlassCard className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:border-cyan-300/40">
+          {cardContent}
+        </GlassCard>
+        <Link
+          href={`/productos/${product.slug}`}
+          className="absolute inset-0 z-10 rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
+          aria-label={`Ver ${product.name}`}
+        />
+      </div>
+    );
   }
 
-  return content;
+  return (
+    <GlassCard className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:border-cyan-300/40">
+      {cardContent}
+    </GlassCard>
+  );
 }
 
 function formatPrice(value: number) {

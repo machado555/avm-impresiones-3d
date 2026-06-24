@@ -6,14 +6,14 @@ export function RewardsPreview() {
   const rewards = [
     { title: "Compra y suma", description: "Puntos automaticos por pedido confirmado.", Icon: Trophy },
     { title: "Canje flexible", description: "Descuentos fijos, porcentuales o envio bonificado.", Icon: Gift },
-    { title: "Cuenta segura", description: "RLS, perfiles propios y rutas protegidas con Supabase.", Icon: ShieldCheck }
+    { title: "Cuenta segura", description: "Tus datos protegidos con los mas altos estandares de seguridad.", Icon: ShieldCheck }
   ];
 
   return (
     <Section
       eyebrow="Fidelizacion"
       title="Puntos y recompensas desde el ADN del producto"
-      description="Cada compra suma puntos. El panel del usuario mostrara saldo, movimientos, recompensas disponibles y beneficios canjeables."
+      description="Cada compra suma puntos que podes canjear por descuentos y beneficios exclusivos."
     >
       <div className="grid gap-4 md:grid-cols-3">
         {rewards.map(({ title, description, Icon }) => (

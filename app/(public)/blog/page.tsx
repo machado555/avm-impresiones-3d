@@ -10,9 +10,9 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <Section
-      eyebrow="SEO + AdSense"
-      title="Blog preparado para trafico organico"
-      description="Wireframe listo para posts con metadata, categorias, lectura recomendada, JSON-LD y bloques AdSense."
+      eyebrow="Blog"
+      title="Descubri el mundo de la impresion 3D"
+      description="Guias, consejos y novedades sobre impresion 3D, materiales, diseño y tecnologia."
     >
       <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <div className="grid gap-4">
@@ -28,9 +28,9 @@ export default function BlogPage() {
           ))}
         </div>
         <aside className="glass h-fit rounded-[8px] p-5">
-          <p className="text-sm font-semibold text-white">Bloque AdSense</p>
+          <p className="text-sm font-semibold text-white">Contenido patrocinado</p>
           <div className="mt-4 grid h-64 place-items-center rounded-[8px] border border-dashed border-white/20 text-sm text-slate-500">
-            anuncio responsive
+            espacio publicitario
           </div>
         </aside>
       </div>

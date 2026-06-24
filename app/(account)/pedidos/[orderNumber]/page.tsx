@@ -30,7 +30,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
   const timeline = await getOrderTimeline(order.id);
 
   return (
-    <Section eyebrow="Pedido" title={order.orderNumber} description="Detalle del pedido, items congelados y timeline de eventos.">
+    <Section eyebrow="Pedido" title={order.orderNumber} description="Resumen completo de tu pedido con los items y el estado actual.">
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
         <div className="grid gap-6">
           <GlassCard>

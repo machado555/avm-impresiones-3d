@@ -9,7 +9,7 @@ export function CustomProcess() {
     <Section
       eyebrow="Servicio personalizado"
       title="Del boceto a la pieza final en tres pasos"
-      description="El formulario esta pensado para captar leads de alto valor: archivos, medidas, material, color, presupuesto y prioridad."
+      description="Contanos tu idea y la hacemos realidad: archivos, medidas, material, color y presupuesto a medida."
     >
       <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1fr_0.9fr]">
         {processSteps.map((step, index) => {

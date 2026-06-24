@@ -5,18 +5,21 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { AuthActionState } from "@/features/auth/actions/types";
 
 export async function registerAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {
-  const fullName = String(formData.get("fullName") ?? "").trim();
+  const firstName = String(formData.get("firstName") ?? "").trim();
+  const lastName = String(formData.get("lastName") ?? "").trim();
+  const fullName = `${firstName} ${lastName}`.trim();
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
   const phone = String(formData.get("phone") ?? "").trim();
-  const legalAccepted = formData.get("legalAccepted") === "on";
+  const address = String(formData.get("address") ?? "").trim();
+  const termsAccepted = formData.get("termsAccepted") === "on";
 
-  if (!fullName || !email || !password) {
-    return { status: "error", message: "Completa nombre, email y password." };
+  if (!firstName || !lastName || !email || !password) {
+    return { status: "error", message: "Completa nombre, apellido, email y password." };
   }
 
-  if (!legalAccepted) {
-    return { status: "error", message: "Debes aceptar los terminos y la politica de privacidad." };
+  if (!termsAccepted) {
+    return { status: "error", message: "Debes aceptar los terminos y condiciones." };
   }
 
   if (password.length < 8) {
@@ -29,8 +32,11 @@ export async function registerAction(_state: AuthActionState, formData: FormData
     password,
     options: {
       data: {
+        first_name: firstName,
+        last_name: lastName,
         full_name: fullName,
         phone,
+        address,
         terms_accepted: true,
         privacy_accepted: true
       }
@@ -46,8 +52,11 @@ export async function registerAction(_state: AuthActionState, formData: FormData
       .from("profiles")
       .update({
         email,
+        first_name: firstName,
+        last_name: lastName,
         full_name: fullName,
         phone: phone || null,
+        address: address || null,
         terms_accepted: true,
         terms_accepted_at: new Date().toISOString(),
         privacy_accepted: true,

@@ -13,9 +13,9 @@ export function HeroSection() {
               <Sparkles size={16} />
               Fabricacion digital, objetos tech y piezas a medida
             </div>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.15] text-white sm:text-6xl lg:text-7xl">
               AVM-Impresiones 3D
-              <span className="block text-gradient">tecnologia hecha tangible.</span>
+              <span className="block pb-1 text-gradient">tecnologia hecha tangible.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Una tienda online premium para comprar impresiones 3D, electronica, pequenos electrodomesticos y solicitar disenos personalizados con experiencia rapida, clara y futurista.

@@ -8,7 +8,7 @@ import { getOrders } from "@/features/orders/data/get-orders";
 export default async function OrdersPage() {
   const orders = await getOrders();
   return (
-    <Section eyebrow="Mi cuenta" title="Historial de pedidos" description="Pedidos confirmados, estado de pago, timeline y puntos estimados.">
+    <Section eyebrow="Mi cuenta" title="Historial de pedidos" description="Todos tus pedidos en un solo lugar con su estado actual.">
       {orders.length === 0 ? (
         <EmptyOrdersState />
       ) : (

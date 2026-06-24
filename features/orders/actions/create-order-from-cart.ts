@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { requireAuth } from "@/features/auth/guards/require-auth";
+import { getCurrentProfile } from "@/features/auth/data/get-current-profile";
 import { getCart } from "@/features/cart/data/get-cart";
 import { calculateOrderTotals } from "@/features/orders/services/order-totals";
 import { createOrderEvent } from "@/features/orders/services/order-events";
@@ -11,7 +11,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { DeliveryMethod } from "@/types/orders";
 
 export async function createOrderFromCart(formData: FormData) {
-  const user = await requireAuth("/checkout");
+  const user = await getCurrentProfile();
   const cart = await getCart();
 
   if (!cart.id || cart.items.length === 0) {
@@ -27,9 +27,9 @@ export async function createOrderFromCart(formData: FormData) {
   const deliveryMethod = String(formData.get("deliveryMethod") ?? "pickup") as DeliveryMethod;
   const notes = String(formData.get("notes") ?? "").trim() || null;
   const contactSnapshot = {
-    fullName: String(formData.get("fullName") ?? user.fullName ?? "").trim(),
-    email: String(formData.get("email") ?? user.email ?? "").trim(),
-    phone: String(formData.get("phone") ?? user.phone ?? "").trim()
+    fullName: String(formData.get("fullName") ?? user?.fullName ?? "").trim(),
+    email: String(formData.get("email") ?? user?.email ?? "").trim(),
+    phone: String(formData.get("phone") ?? user?.phone ?? "").trim()
   };
   const shippingSnapshot = {
     deliveryMethod,
@@ -46,7 +46,7 @@ export async function createOrderFromCart(formData: FormData) {
   const { data: order, error: orderError } = await supabase
     .from("orders")
     .insert({
-      user_id: user.id,
+      user_id: user?.id ?? null,
       cart_id: cart.id,
       order_number: orderNumber,
       status: "pending_payment",
@@ -56,7 +56,7 @@ export async function createOrderFromCart(formData: FormData) {
       discounts: totals.discounts,
       shipping: totals.shipping,
       total: totals.total,
-      estimated_points: totals.estimatedPoints,
+      estimated_points: user ? totals.estimatedPoints : 0,
       delivery_method: deliveryMethod,
       notes,
       contact_snapshot: contactSnapshot,
@@ -93,8 +93,8 @@ export async function createOrderFromCart(formData: FormData) {
   await createOrderEvent({
     orderId: order.id,
     event: "order_created",
-    actorType: "customer",
-    actorId: user.id,
+    actorType: user ? "customer" : "guest",
+    actorId: user?.id ?? null,
     metadata: { orderNumber: order.order_number, cartId: cart.id }
   });
 

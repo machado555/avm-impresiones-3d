@@ -15,7 +15,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <Section eyebrow="Contacto" title="Hablemos de tu proximo proyecto" description="Pagina preparada para consultas comerciales, soporte y derivacion a WhatsApp.">
+    <Section eyebrow="Contacto" title="Hablemos de tu proximo proyecto" description="Estamos aca para ayudarte. Consultanos por cotizaciones, presupuestos o lo que necesites.">
       <div className="grid gap-4 md:grid-cols-3">
         {contactCards.map(({ title, description, Icon }) => (
           <GlassCard key={title}>

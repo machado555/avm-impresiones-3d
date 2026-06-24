@@ -12,7 +12,7 @@ export default async function CategoriesPage() {
   const categories = await getCategories();
 
   return (
-    <Section eyebrow="Categorias" title="Explora por necesidad" description="Estructura preparada para categorias padre, subcategorias, imagenes y slugs SEO.">
+    <Section eyebrow="Categorias" title="Explora por necesidad" description="Encontra lo que buscas por categoria: impresion 3D, electronica y servicios personalizados.">
       <div className="grid gap-4 md:grid-cols-2">
         {categories.map((category) => {
           return (

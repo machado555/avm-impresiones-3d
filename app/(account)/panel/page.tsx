@@ -20,7 +20,7 @@ export default async function AccountPage() {
   ];
 
   return (
-    <Section eyebrow="Mi cuenta" title={`Hola${user.fullName ? `, ${user.fullName}` : ""}`} description="Dashboard protegido con Supabase Auth y perfil conectado.">
+    <Section eyebrow="Mi cuenta" title={`Hola${user.fullName ? `, ${user.fullName}` : ""}`} description="Administra tus pedidos, favoritos y puntos en un solo lugar.">
       <div className="mb-6 flex justify-end">
         <LogoutButton />
       </div>

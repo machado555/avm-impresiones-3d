@@ -6,5 +6,5 @@ export default async function ProfilePage() {
 
   if (!user) return null;
 
-  return <Section eyebrow="Mi cuenta" title="Perfil" description={`Perfil conectado: ${user.email ?? "sin email"}. Formulario futuro para nombre, telefono, avatar y preferencias de contacto.`} />;
+  return <Section eyebrow="Mi cuenta" title="Perfil" description={`Bienvenido${user.fullName ? `, ${user.fullName}` : ""}. Gestiona tus datos personales desde aca.`} />;
 }

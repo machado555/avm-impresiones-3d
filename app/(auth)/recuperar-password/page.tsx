@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function RecoverPasswordPage() {
   return (
-    <Section eyebrow="Cuenta" title="Recuperar password" description="Te enviaremos un enlace seguro con Supabase Auth.">
+    <Section eyebrow="Cuenta" title="Recuperar password" description="Te enviaremos un enlace seguro a tu correo electrónico.">
       <RecoverPasswordForm />
     </Section>
   );

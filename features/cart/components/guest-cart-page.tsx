@@ -23,8 +23,8 @@ export function GuestCartPage() {
       </div>
       <div className="grid h-fit gap-4">
         <CartSummary cart={cart} />
-        <ButtonLink href="/login?redirectTo=/checkout" className="w-full">
-          Iniciar sesion para confirmar
+        <ButtonLink href="/checkout" className="w-full">
+          Continuar al checkout
         </ButtonLink>
       </div>
     </div>

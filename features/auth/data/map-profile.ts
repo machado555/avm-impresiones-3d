@@ -4,7 +4,10 @@ type ProfileRow = {
   id: string;
   email: string | null;
   full_name: string | null;
+  first_name: string | null;
+  last_name: string | null;
   phone: string | null;
+  address: string | null;
   avatar_url: string | null;
   role: UserRole;
   status: ProfileStatus;
@@ -18,7 +21,10 @@ export function mapProfileToAuthUser(profile: ProfileRow): AuthUser {
     id: profile.id,
     email: profile.email,
     fullName: profile.full_name,
+    firstName: profile.first_name,
+    lastName: profile.last_name,
     phone: profile.phone,
+    address: profile.address,
     avatarUrl: profile.avatar_url,
     role: profile.role,
     status: profile.status,
