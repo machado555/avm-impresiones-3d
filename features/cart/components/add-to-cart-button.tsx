@@ -5,6 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { addToCart } from "@/features/cart/actions/add-to-cart";
 import { addGuestCartItem, openCartDrawer } from "@/lib/stores/cart-store";
+import { addToast } from "@/lib/stores/toast-store";
 import type { CartItem } from "@/types/cart";
 
 type AddToCartButtonProps = {
@@ -22,6 +23,7 @@ export function AddToCartButton({ productId, variantId = null, quantity = 1, isA
   function handleClick() {
     if (!isAuthenticated) {
       addGuestCartItem({ ...guestItem, quantity }, maxStock);
+      addToast("success", "Producto agregado al carrito.");
       openCartDrawer();
       return;
     }
@@ -29,7 +31,10 @@ export function AddToCartButton({ productId, variantId = null, quantity = 1, isA
     startTransition(async () => {
       const result = await addToCart(productId, variantId, quantity);
       if (result.ok) {
+        addToast("success", result.message ?? "Producto agregado al carrito.");
         openCartDrawer();
+      } else {
+        addToast("error", result.message ?? "No se pudo agregar el producto.");
       }
     });
   }

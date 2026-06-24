@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { VerificationModal } from "@/features/auth/components/verification-modal";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { addToast } from "@/lib/stores/toast-store";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -69,7 +70,9 @@ export function RegisterForm() {
     setIsPending(false);
 
     if (signUpError || !data.user) {
-      setError(signUpError?.message ?? "No se pudo crear la cuenta.");
+      const msg = signUpError?.message ?? "No se pudo crear la cuenta.";
+      setError(msg);
+      addToast("error", msg);
       return;
     }
 
@@ -88,11 +91,13 @@ export function RegisterForm() {
           privacy_accepted_at: new Date().toISOString()
         })
         .eq("id", data.user.id);
+      addToast("success", "Cuenta creada correctamente.");
       router.push("/panel");
       router.refresh();
       return;
     }
 
+    addToast("success", "Cuenta creada. Revisa tu email para verificar.");
     setRegisteredEmail(email);
     setShowVerification(true);
   }

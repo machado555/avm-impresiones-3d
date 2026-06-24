@@ -1,11 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { loginAction } from "@/features/auth/actions/login";
 import { initialAuthActionState } from "@/features/auth/actions/types";
+import { addToast } from "@/lib/stores/toast-store";
 
 type LoginFormProps = {
   redirectTo?: string;
@@ -13,6 +14,12 @@ type LoginFormProps = {
 
 export function LoginForm({ redirectTo = "/panel" }: LoginFormProps) {
   const [state, formAction, isPending] = useActionState(loginAction, initialAuthActionState);
+
+  useEffect(() => {
+    if (state.message && state.status === "error") {
+      addToast("error", state.message);
+    }
+  }, [state]);
 
   return (
     <GlassCard className="mx-auto max-w-md">

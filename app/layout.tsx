@@ -6,6 +6,7 @@ import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { CartDrawer } from "@/features/cart/components/cart-drawer";
 import { GuestCartStorage } from "@/features/cart/components/guest-cart-storage";
 import { AuthStoreSync } from "@/features/auth/components/auth-store-sync";
+import { ToastProvider } from "@/components/ui/toast-provider";
 import { getCurrentProfile } from "@/features/auth/data/get-current-profile";
 import "./globals.css";
 
@@ -36,12 +37,14 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <html lang="es">
       <body>
         <AuthStoreSync user={user} />
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
-        <GuestCartStorage />
-        <CartDrawer />
-        <WhatsAppButton />
+        <ToastProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+          <GuestCartStorage />
+          <CartDrawer />
+          <WhatsAppButton />
+        </ToastProvider>
       </body>
     </html>
   );
