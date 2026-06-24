@@ -22,7 +22,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050712]/80 backdrop-blur-2xl">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3" aria-label="Ir al inicio">
+        <Link href="/" className="flex cursor-pointer items-center gap-3" aria-label="Ir al inicio">
           <span className="grid h-9 w-9 place-items-center rounded-[8px] bg-gradient-to-br from-cyan-300 to-violet-500 text-sm font-black text-slate-950">
             AVM
           </span>
@@ -31,20 +31,20 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-1 lg:flex">
           {siteConfig.navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+            <Link key={item.href} href={item.href} className="cursor-pointer rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
               {item.label}
             </Link>
           ))}
-          <Link href="/terminos-y-condiciones" className="rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+          <Link href="/terminos-y-condiciones" className="cursor-pointer rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
             Legal
           </Link>
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/panel" className="hidden rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Panel de usuario">
+          <Link href="/panel" className="hidden cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Panel de usuario">
             <UserRound size={20} />
           </Link>
-          <Link href="/favoritos" className="hidden rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Ver favoritos">
+          <Link href="/favoritos" className="hidden cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Ver favoritos">
             <FavoritesCount />
           </Link>
           <span className="rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white">
@@ -54,7 +54,7 @@ export function SiteHeader() {
             Cotizar diseno
           </ButtonLink>
           <button
-            className="rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white lg:hidden"
+            className="cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white lg:hidden"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -71,7 +71,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex px-5 py-4 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+                className="flex cursor-pointer px-5 py-4 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
               >
                 {item.label}
               </Link>

@@ -77,7 +77,7 @@ export function ProductCard({ name, category, price, points, description, produc
         </GlassCard>
         <Link
           href={`/productos/${product.slug}`}
-          className="absolute inset-0 z-10 rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
+          className="absolute inset-0 z-10 cursor-pointer rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
           aria-label={`Ver ${product.name}`}
         />
       </div>

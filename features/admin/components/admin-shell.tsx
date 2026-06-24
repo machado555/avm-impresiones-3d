@@ -16,11 +16,11 @@ export async function AdminShell({ children }: AdminShellProps) {
         <p className="px-3 text-sm font-semibold text-white">AVM Admin</p>
         <nav className="mt-4 grid gap-1">
           {adminNavItems.map((item) => (
-            <Link key={item.href} href={item.href} className="rounded-[8px] px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+            <Link key={item.href} href={item.href} className="cursor-pointer rounded-[8px] px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
               {item.label}
             </Link>
           ))}
-          <Link href="/admin/configuracion" className="rounded-[8px] px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+          <Link href="/admin/configuracion" className="cursor-pointer rounded-[8px] px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
             Configuracion
           </Link>
         </nav>

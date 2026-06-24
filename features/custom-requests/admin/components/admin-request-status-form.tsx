@@ -7,7 +7,7 @@ export function AdminRequestStatusForm({ request }: { request: CustomRequest }) 
     <form action={updateCustomRequestStatus} className="grid gap-3">
       <input type="hidden" name="requestId" value={request.id} />
       <input type="hidden" name="requestNumber" value={request.requestNumber} />
-      <select name="status" defaultValue={request.status} className="rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none">
+      <select name="status" defaultValue={request.status} className="cursor-pointer rounded-md border border-white/20 bg-[#1a1a2e] px-3 py-2 text-sm text-white outline-none focus:border-purple-500 focus:outline-none">
         {["pending", "reviewing", "quoted", "approved", "printing", "ready", "delivered", "rejected", "cancelled"].map((status) => (
           <option key={status} value={status}>{status}</option>
         ))}

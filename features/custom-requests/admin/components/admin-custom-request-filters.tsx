@@ -6,7 +6,7 @@ export function AdminCustomRequestFilters() {
   return (
     <form className="glass mb-5 grid gap-3 rounded-[8px] p-4 md:grid-cols-3 lg:grid-cols-6">
       <input className={inputClass} name="query" placeholder="Buscar" />
-      <select className={inputClass} name="status" defaultValue="">
+      <select className="cursor-pointer rounded-md border border-white/20 bg-[#1a1a2e] px-3 py-2 text-sm text-white outline-none focus:border-purple-500 focus:outline-none" name="status" defaultValue="">
         <option value="">Estado</option>
         <option value="pending">Pendiente</option>
         <option value="reviewing">Revision</option>
@@ -14,12 +14,12 @@ export function AdminCustomRequestFilters() {
         <option value="approved">Aprobada</option>
         <option value="printing">Imprimiendo</option>
       </select>
-      <select className={inputClass} name="priority" defaultValue="">
+      <select className="cursor-pointer rounded-md border border-white/20 bg-[#1a1a2e] px-3 py-2 text-sm text-white outline-none focus:border-purple-500 focus:outline-none" name="priority" defaultValue="">
         <option value="">Prioridad</option>
         <option value="normal">Normal</option>
         <option value="urgent">Urgente</option>
       </select>
-      <select className={inputClass} name="requestType" defaultValue="">
+      <select className="cursor-pointer rounded-md border border-white/20 bg-[#1a1a2e] px-3 py-2 text-sm text-white outline-none focus:border-purple-500 focus:outline-none" name="requestType" defaultValue="">
         <option value="">Tipo</option>
         <option value="custom_model">Modelo</option>
         <option value="existing_model_print">Imprimir modelo</option>

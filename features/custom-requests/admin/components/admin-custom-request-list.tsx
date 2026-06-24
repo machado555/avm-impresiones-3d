@@ -7,7 +7,7 @@ export function AdminCustomRequestList({ requests }: { requests: CustomRequest[]
   return (
     <div className="grid gap-3">
       {requests.map((request) => (
-        <Link key={request.id} href={`/admin/solicitudes/${request.requestNumber}`}>
+        <Link key={request.id} href={`/admin/solicitudes/${request.requestNumber}`} className="cursor-pointer">
           <GlassCard className="grid gap-4 transition hover:-translate-y-1 hover:border-cyan-300/40 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <p className="font-semibold text-white">{request.projectName}</p>

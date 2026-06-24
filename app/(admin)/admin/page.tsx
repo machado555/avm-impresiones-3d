@@ -43,7 +43,7 @@ export default async function AdminPage() {
           <h2 className="text-lg font-semibold text-white">Ultimas solicitudes</h2>
           <div className="mt-4 grid gap-3">
             {metrics.latestRequests.map((request) => (
-              <Link key={request.request_number} href={`/admin/solicitudes/${request.request_number}`} className="rounded-[8px] border border-white/10 p-3 text-sm text-slate-300 hover:bg-white/10">
+              <Link key={request.request_number} href={`/admin/solicitudes/${request.request_number}`} className="cursor-pointer rounded-[8px] border border-white/10 p-3 text-sm text-slate-300 hover:bg-white/10">
                 {request.request_number} · {request.project_name} · {request.status}
               </Link>
             ))}
@@ -53,7 +53,7 @@ export default async function AdminPage() {
           <h2 className="text-lg font-semibold text-white">Ultimos pedidos</h2>
           <div className="mt-4 grid gap-3">
             {metrics.latestOrders.map((order) => (
-              <Link key={order.order_number} href={`/pedidos/${order.order_number}`} className="rounded-[8px] border border-white/10 p-3 text-sm text-slate-300 hover:bg-white/10">
+              <Link key={order.order_number} href={`/pedidos/${order.order_number}`} className="cursor-pointer rounded-[8px] border border-white/10 p-3 text-sm text-slate-300 hover:bg-white/10">
                 {order.order_number} · {order.status} · {formatPrice(Number(order.total))}
               </Link>
             ))}
