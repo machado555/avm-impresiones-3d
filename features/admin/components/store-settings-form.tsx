@@ -6,7 +6,7 @@ const inputClass = "rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py
 
 export function StoreSettingsForm({ settings }: { settings: StoreSettings | null }) {
   return (
-    <form action={async (formData: FormData) => { await updateStoreSettings(formData); }} className="glass grid gap-4 rounded-[8px] p-5">
+    <form action={updateStoreSettings} className="glass grid gap-4 rounded-[8px] p-5">
       <input type="hidden" name="id" value={settings?.id ?? ""} />
       <div className="grid gap-4 md:grid-cols-2">
         <input className={inputClass} name="businessName" placeholder="Nombre del negocio" defaultValue={settings?.businessName ?? "AVM-Impresiones 3D"} />
