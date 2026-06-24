@@ -21,37 +21,11 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
     return { status: "error", message: "Credenciales invalidas." };
   }
 
-  // Leemos el perfil desde los metadatos del usuario en auth.users
-  // o directamente desde data.user que ya tenemos sin necesitar otra query
   const userId = data.user.id;
 
-  // Segundo cliente para leer perfil (las cookies ya están seteadas en este punto)
-  const supabase2 = await createSupabaseServerClient();
-
-  const { data: profile, error: profileError } = await supabase2
-    .from("profiles")
-    .select("role,status,is_active")
-    .eq("id", userId)
-    .single();
-
-  if (profileError || !profile) {
-    await supabase.auth.signOut();
-    return { status: "error", message: `DEBUG: ${profileError?.message} | ${profileError?.code}` };
+  // DEBUG TEMPORAL - borrar después
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return { status: "error", message: "DEBUG: SERVICE_ROLE_KEY is undefined" };
   }
-
-  if (profile.status !== "active" || !profile.is_active) {
-    await supabase.auth.signOut();
-    return { status: "error", message: "La cuenta no está activa." };
-  }
-
-  await supabase2
-    .from("profiles")
-    .update({ last_login_at: new Date().toISOString() })
-    .eq("id", userId);
-
-  if (profile.role === "admin" || profile.role === "superadmin") {
-    redirect(redirectTo.startsWith("/admin") ? redirectTo : "/admin");
-  }
-
-  redirect(redirectTo);
+  return { status: "error", message: `DEBUG: key starts with ${process.env.SUPABASE_SERVICE_ROLE_KEY.substring(0, 10)}` };
 }
