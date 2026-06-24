@@ -10,7 +10,8 @@ export type AdminPermission =
   | "rewards:manage"
   | "blog:manage"
   | "users:manage"
-  | "logs:read";
+  | "logs:read"
+  | "cms:manage";
 
 export type ActivityLog = {
   id: string;

@@ -34,7 +34,8 @@ export const rolePermissions: Record<UserRole, AdminPermission[]> = {
     "rewards:manage",
     "blog:manage",
     "users:manage",
-    "logs:read"
+    "logs:read",
+    "cms:manage"
   ]
 };
 

@@ -1,13 +1,31 @@
 import { GlassCard } from "@/components/ui/glass-card";
 import { Section } from "@/components/ui/section";
-import { blogPosts } from "@/lib/constants/mock-data";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { blogPosts as fallbackPosts } from "@/lib/constants/mock-data";
 
 export const metadata = {
   title: "Blog",
   description: "Guias SEO sobre impresion 3D, electronica y prototipado."
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const supabase = await createSupabaseServerClient();
+  const { data: dbPosts } = await supabase
+    .from("blog_posts")
+    .select("title,excerpt,slug,created_at,blog_categories(name)")
+    .eq("status", "published")
+    .order("created_at", { ascending: false });
+
+  const posts = dbPosts && dbPosts.length > 0
+    ? dbPosts.map((p: any) => ({
+        title: p.title,
+        excerpt: p.excerpt ?? "",
+        category: p.blog_categories?.name ?? "Blog",
+        readTime: "5 min",
+        slug: p.slug
+      }))
+    : fallbackPosts;
+
   return (
     <Section
       eyebrow="Blog"
@@ -16,7 +34,7 @@ export default function BlogPage() {
     >
       <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <div className="grid gap-4">
-          {blogPosts.map((post) => (
+          {posts.map((post: any) => (
             <GlassCard key={post.title}>
               <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-cyan-300">
                 <span>{post.category}</span>

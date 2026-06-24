@@ -13,6 +13,7 @@ export const adminNavItems: Array<{
   { label: "Materiales", href: "/admin/materiales", permission: "materials:manage" },
   { label: "Recompensas", href: "/admin/recompensas", permission: "rewards:manage" },
   { label: "Blog", href: "/admin/blog", permission: "blog:manage" },
+  { label: "Apariencia", href: "/admin/apariencia", permission: "cms:manage" },
   { label: "Usuarios", href: "/admin/usuarios", permission: "users:manage" },
   { label: "Logs", href: "/admin/logs", permission: "logs:read" }
 ];

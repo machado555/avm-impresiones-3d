@@ -18,6 +18,7 @@ export const accountRoutes = ["/panel", "/pedidos", "/puntos", "/favoritos", "/s
 export const adminRoutes = [
   "/admin",
   "/admin/productos",
+  "/admin/productos/nuevo",
   "/admin/categorias",
   "/admin/pedidos",
   "/admin/solicitudes",
@@ -25,18 +26,23 @@ export const adminRoutes = [
   "/admin/recompensas",
   "/admin/usuarios",
   "/admin/blog",
-  "/admin/logs"
+  "/admin/blog/nuevo",
+  "/admin/logs",
+  "/admin/apariencia"
 ] as const;
 
 export const routeCapabilities: Record<string, AdminPermission[]> = {
   "/admin": ["admin:access"],
   "/admin/productos": ["products:manage"],
+  "/admin/productos/nuevo": ["products:manage"],
   "/admin/categorias": ["categories:manage"],
   "/admin/pedidos": ["orders:manage"],
   "/admin/solicitudes": ["requests:manage"],
   "/admin/materiales": ["materials:manage"],
   "/admin/recompensas": ["rewards:manage"],
   "/admin/blog": ["blog:manage"],
+  "/admin/blog/nuevo": ["blog:manage"],
   "/admin/logs": ["logs:read"],
-  "/admin/usuarios": ["users:manage"]
+  "/admin/usuarios": ["users:manage"],
+  "/admin/apariencia": ["cms:manage"]
 };
