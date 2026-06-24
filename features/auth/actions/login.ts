@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import type { AuthActionState } from "@/features/auth/actions/types";
 import { normalizeRedirectTo } from "@/features/auth/utils/redirects";
 
@@ -21,11 +22,41 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
     return { status: "error", message: "Credenciales invalidas." };
   }
 
-  const userId = data.user.id;
+  const adminClient = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      }
+    }
+  );
 
-  // DEBUG TEMPORAL - borrar después
-  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    return { status: "error", message: "DEBUG: SERVICE_ROLE_KEY is undefined" };
+  const { data: profile, error: profileError } = await adminClient
+    .from("profiles")
+    .select("role,status,is_active")
+    .eq("id", data.user.id)
+    .single();
+
+  if (profileError || !profile) {
+    await supabase.auth.signOut();
+    return { status: "error", message: `DEBUG: ${profileError?.message} | ${profileError?.code}` };
   }
-  return { status: "error", message: `DEBUG: key starts with ${process.env.SUPABASE_SERVICE_ROLE_KEY.substring(0, 10)}` };
+
+  if (profile.status !== "active" || !profile.is_active) {
+    await supabase.auth.signOut();
+    return { status: "error", message: "La cuenta no está activa." };
+  }
+
+  await adminClient
+    .from("profiles")
+    .update({ last_login_at: new Date().toISOString() })
+    .eq("id", data.user.id);
+
+  if (profile.role === "admin" || profile.role === "superadmin") {
+    redirect(redirectTo.startsWith("/admin") ? redirectTo : "/admin");
+  }
+
+  redirect(redirectTo);
 }
