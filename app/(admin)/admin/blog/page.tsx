@@ -8,7 +8,6 @@ import { deleteBlogPost } from "@/features/blog/admin/actions/blog-posts";
 export default async function AdminBlogPage() {
   await requireCapability("blog:manage");
   const posts = await getAdminBlogPosts();
-
   return (
     <AdminShell>
       <AdminSectionHeader title="Blog" description="Gestiona los articulos del blog." />
@@ -47,7 +46,7 @@ export default async function AdminBlogPage() {
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <Link href={`/admin/blog/${post.id}`} className="rounded px-2 py-1 text-xs text-cyan-200 hover:bg-white/10">Editar</Link>
-                    <form action={deleteBlogPost.bind(null, post.id)}>
+                    <form action={async () => { await deleteBlogPost(post.id); }}>
                       <button type="submit" className="rounded px-2 py-1 text-xs text-red-300 hover:bg-white/10" onClick={(e) => { if (!confirm("Archivar articulo?")) e.preventDefault(); }}>Archivar</button>
                     </form>
                   </div>
