@@ -21,26 +21,33 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
     return { status: "error", message: "Credenciales invalidas." };
   }
 
-  const { data: profile, error: profileError } = await supabase
+  // Leemos el perfil desde los metadatos del usuario en auth.users
+  // o directamente desde data.user que ya tenemos sin necesitar otra query
+  const userId = data.user.id;
+
+  // Segundo cliente para leer perfil (las cookies ya están seteadas en este punto)
+  const supabase2 = await createSupabaseServerClient();
+
+  const { data: profile, error: profileError } = await supabase2
     .from("profiles")
     .select("role,status,is_active")
-    .eq("id", data.user.id)
+    .eq("id", userId)
     .single();
 
-  if (profileError) {
+  if (profileError || !profile) {
     await supabase.auth.signOut();
-    return { status: "error", message: "Error al verificar tu cuenta. Intentá de nuevo." };
+    return { status: "error", message: `DEBUG: ${profileError?.message} | ${profileError?.code}` };
   }
 
-  if (!profile || profile.status !== "active" || !profile.is_active) {
+  if (profile.status !== "active" || !profile.is_active) {
     await supabase.auth.signOut();
     return { status: "error", message: "La cuenta no está activa." };
   }
 
-  await supabase
+  await supabase2
     .from("profiles")
     .update({ last_login_at: new Date().toISOString() })
-    .eq("id", data.user.id);
+    .eq("id", userId);
 
   if (profile.role === "admin" || profile.role === "superadmin") {
     redirect(redirectTo.startsWith("/admin") ? redirectTo : "/admin");
