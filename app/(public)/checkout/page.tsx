@@ -23,7 +23,7 @@ export default async function CheckoutPage() {
       {cart.items.length === 0 ? (
         <EmptyCartState />
       ) : (
-        <form action={createOrderFromCart} className="grid gap-6 lg:grid-cols-[1fr_420px]">
+        <form action={async (formData: FormData) => { await createOrderFromCart(formData); }} className="grid gap-6 lg:grid-cols-[1fr_420px]">
           <div className="grid gap-4">
             <GlassCard>
               <h2 className="text-lg font-semibold text-white">Datos de contacto</h2>
