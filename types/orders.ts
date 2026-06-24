@@ -1,4 +1,4 @@
-export type DeliveryMethod = "pickup" | "delivery" | "shipping";
+export type OrderEventActorType = "customer" | "admin" | "system" | "guest";
 
 export type OrderStatus =
   | "pending"
