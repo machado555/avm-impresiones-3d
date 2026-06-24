@@ -41,12 +41,12 @@ export async function loginAction(_state: AuthActionState, formData: FormData): 
 
   if (profileError || !profile) {
     await supabase.auth.signOut();
-    return { status: "error", message: `DEBUG: ${profileError?.message} | ${profileError?.code}` };
+    return { status: "error", message: "Error al verificar tu cuenta. Intentá de nuevo." };
   }
 
   if (profile.status !== "active" || !profile.is_active) {
     await supabase.auth.signOut();
-    return { status: "error", message: "La cuenta no está activa." };
+    return { status: "error", message: "La cuenta no está activa. Contactá a AVM para revisar el acceso." };
   }
 
   await adminClient
