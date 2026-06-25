@@ -63,10 +63,10 @@ export default async function AdminProductsPage() {
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <Link href={`/admin/productos/${product.id}`} className="rounded px-2 py-1 text-xs text-cyan-200 hover:bg-white/10">Editar</Link>
-                    <form action={duplicateProductAction.bind(null, product.id)}>
+                    <form action={async () => { await duplicateProductAction(product.id); }}>
                       <button type="submit" className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-white/10">Duplicar</button>
                     </form>
-                    <form action={deleteProductAction.bind(null, product.id)}>
+                    <form action={async () => { await deleteProductAction(product.id); }}>
                       <button type="submit" className="rounded px-2 py-1 text-xs text-red-300 hover:bg-white/10" onClick={(e) => { if (!confirm("Archivar producto?")) e.preventDefault(); }}>Archivar</button>
                     </form>
                   </div>
