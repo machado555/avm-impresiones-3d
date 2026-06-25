@@ -82,34 +82,82 @@ export function ProductForm({ product, categories }: ProductFormProps) {
   }
 
   const inputClass = "rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60";
+  const labelClass = "flex flex-col gap-1";
+  const labelTextClass = "text-xs text-slate-400 px-1";
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
       <form id="product-form" action={formAction} className="grid gap-4">
         <div className="grid gap-4 md:grid-cols-2">
-          <input className={inputClass} name="name" placeholder="Nombre del producto" defaultValue={product?.name ?? ""} required />
-          <input className={inputClass} name="slug" placeholder="slug-del-producto" defaultValue={product?.slug ?? ""} required />
+          <label className={labelClass}>
+            <span className={labelTextClass}>Nombre</span>
+            <input className={inputClass} name="name" placeholder="Nombre del producto" defaultValue={product?.name ?? ""} required />
+          </label>
+          <label className={labelClass}>
+            <span className={labelTextClass}>Slug</span>
+            <input className={inputClass} name="slug" placeholder="slug-del-producto" defaultValue={product?.slug ?? ""} required />
+          </label>
         </div>
-        <textarea className={`${inputClass} min-h-24 resize-y`} name="description" placeholder="Descripcion" defaultValue={product?.description ?? ""} />
+
+        <label className={labelClass}>
+          <span className={labelTextClass}>Descripción</span>
+          <textarea className={`${inputClass} min-h-24 resize-y`} name="description" placeholder="Descripcion" defaultValue={product?.description ?? ""} />
+        </label>
+
         <div className="grid gap-4 md:grid-cols-3">
-          <MonetaryInput name="price" currency="ARS" placeholder="$ 0" defaultValue={product?.price ?? ""} required />
-          <MonetaryInput name="compareAtPrice" currency="ARS" placeholder="Precio oferta" defaultValue={product?.compareAtPrice ?? ""} />
-          <input className={inputClass} name="stock" type="number" min="0" placeholder="Stock" defaultValue={product?.stock ?? 0} />
+          <label className={labelClass}>
+            <span className={labelTextClass}>Precio</span>
+            <MonetaryInput name="price" currency="ARS" placeholder="$ 0" defaultValue={product?.price ?? ""} required />
+          </label>
+          <label className={labelClass}>
+            <span className={labelTextClass}>Precio oferta</span>
+            <MonetaryInput name="compareAtPrice" currency="ARS" placeholder="$ 0" defaultValue={product?.compareAtPrice ?? ""} />
+          </label>
+          <label className={labelClass}>
+            <span className={labelTextClass}>Stock</span>
+            <input
+              className={`${inputClass} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+              name="stock"
+              type="number"
+              min="0"
+              placeholder="0"
+              defaultValue={product?.stock ?? 0}
+            />
+          </label>
         </div>
+
         <div className="grid gap-4 md:grid-cols-3">
-          <input className={inputClass} name="pointsReward" type="number" min="0" placeholder="Puntos que otorga" defaultValue={product?.pointsReward ?? 0} />
-          <CustomSelect options={statusOptions} value={status} onChange={setStatus} placeholder="Estado" />
-          <CustomSelect
-            options={[{ value: "", label: "Sin categoria" }, ...categories.map((c) => ({ value: c.id, label: c.name }))]}
-            value={category}
-            onChange={setCategory}
-            placeholder="Categoria"
-          />
+          <label className={labelClass}>
+            <span className={labelTextClass}>Puntos que otorga</span>
+            <input
+              className={`${inputClass} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+              name="pointsReward"
+              type="number"
+              min="0"
+              placeholder="0"
+              defaultValue={product?.pointsReward ?? 0}
+            />
+          </label>
+          <label className={labelClass}>
+            <span className={labelTextClass}>Estado</span>
+            <CustomSelect options={statusOptions} value={status} onChange={setStatus} placeholder="Estado" />
+          </label>
+          <label className={labelClass}>
+            <span className={labelTextClass}>Categoría</span>
+            <CustomSelect
+              options={[{ value: "", label: "Sin categoria" }, ...categories.map((c) => ({ value: c.id, label: c.name }))]}
+              value={category}
+              onChange={setCategory}
+              placeholder="Categoria"
+            />
+          </label>
         </div>
-        <label className="flex items-center gap-2 text-sm text-slate-300">
+
+        <label className="flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
           <input name="isFeatured" type="checkbox" defaultChecked={product?.isFeatured ?? false} />
           Producto destacado
         </label>
+
         <Button type="submit" disabled={isPending}>
           {isPending ? "Guardando..." : product ? "Actualizar producto" : "Crear producto"}
         </Button>
