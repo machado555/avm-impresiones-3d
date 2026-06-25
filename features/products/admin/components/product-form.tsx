@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Trash2, Upload, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MonetaryInput } from "@/components/ui/monetary-input";
@@ -22,6 +23,7 @@ const statusOptions = [
 ];
 
 export function ProductForm({ product, categories }: ProductFormProps) {
+  const router = useRouter();
   const [category, setCategory] = useState<string>(product?.categoryId ?? "");
   const [status, setStatus] = useState<string>(product?.status ?? "draft");
   const [images, setImages] = useState(product?.images ?? []);
@@ -46,8 +48,12 @@ export function ProductForm({ product, categories }: ProductFormProps) {
   const [state, formAction, isPending] = useActionState(wrappedAction, { ok: false, message: "" });
 
   useEffect(() => {
-    if (state.message) addToast(state.ok ? "success" : "error", state.message);
-  }, [state]);
+    if (!state.message) return;
+    addToast(state.ok ? "success" : "error", state.message);
+    if (state.ok && state.id) {
+      router.push(`/admin/productos/${state.id}/editar`);
+    }
+  }, [state, router]);
 
   async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -174,7 +180,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
             </Button>
           </>
         ) : (
-          <p className="text-xs text-slate-500">Guarda el producto primero para poder subir imagenes.</p>
+          <p className="text-xs text-slate-500">Completá los datos y guardá para poder subir imágenes.</p>
         )}
         <div className="grid gap-3">
           {images.map((img) => (
