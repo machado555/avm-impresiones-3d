@@ -22,8 +22,8 @@ const statusOptions = [
 ];
 
 export function ProductForm({ product, categories }: ProductFormProps) {
-  const [category, setCategory] = useState(product?.categoryId ?? "");
-  const [status, setStatus] = useState(product?.status ?? "draft");
+  const [category, setCategory] = useState<string>(product?.categoryId ?? "");
+  const [status, setStatus] = useState<string>(product?.status ?? "draft");
   const [images, setImages] = useState(product?.images ?? []);
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
