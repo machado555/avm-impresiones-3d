@@ -9,7 +9,6 @@ type BlogPostPageProps = {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-
   const supabase = await createSupabaseServerClient();
   const { data: post } = await supabase
     .from("blog_posts")
@@ -38,7 +37,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <img src={post.cover_image} alt={post.title} className="mb-6 w-full rounded-[8px] object-cover" />
         )}
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-cyan-300">
-          <span>{post.blog_categories?.name ?? "Blog"}</span>
+          <span>{post.blog_categories?.[0]?.name ?? "Blog"}</span>
           <span>{new Date(post.created_at).toLocaleDateString("es-AR")}</span>
         </div>
         <div className="mt-6 text-sm leading-7 text-slate-300">
