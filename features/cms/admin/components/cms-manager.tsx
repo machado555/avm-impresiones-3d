@@ -50,7 +50,7 @@ const textSections = [
   ]}
 ];
 
-function ImageUploader({ section, key: imgKey, current }: { section: string; key: string; current?: CmsImage }) {
+function ImageUploader({ section, imgKey, current }: { section: string; imgKey: string; current?: CmsImage }) {
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -94,7 +94,7 @@ function ImageUploader({ section, key: imgKey, current }: { section: string; key
   );
 }
 
-function TextEditor({ section, key: textKey, current }: { section: string; key: string; current?: CmsText }) {
+function TextEditor({ section, textKey, current }: { section: string; textKey: string; current?: CmsText }) {
   const [value, setValue] = useState(current?.value ?? "");
   const [saving, setSaving] = useState(false);
 
