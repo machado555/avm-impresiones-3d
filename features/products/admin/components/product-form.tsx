@@ -51,7 +51,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
     if (!state.message) return;
     addToast(state.ok ? "success" : "error", state.message);
     if (state.ok && state.id) {
-      router.push(`/admin/productos/${state.id}/editar`);
+      router.push(`/admin/productos/${state.id}`);
     }
   }, [state, router]);
 
