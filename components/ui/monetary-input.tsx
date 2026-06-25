@@ -1,9 +1,9 @@
 "use client";
-
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 type MonetaryInputProps = {
   name: string;
+  defaultValue?: number | string;
   value?: number | string;
   onChange?: (value: string) => void;
   placeholder?: string;
@@ -23,15 +23,34 @@ function formatARS(value: string) {
   }
 }
 
-export function MonetaryInput({ name, value, onChange, placeholder = "$ 0", className = "", currency = "ARS", required, min }: MonetaryInputProps) {
-  const inputValue = typeof value === "number" ? String(value) : (value ?? "");
+export function MonetaryInput({
+  name,
+  defaultValue,
+  value,
+  onChange,
+  placeholder = "$ 0",
+  className = "",
+  currency = "ARS",
+  required,
+  min,
+}: MonetaryInputProps) {
+  const isControlled = value !== undefined;
+
+  const [internalValue, setInternalValue] = useState<string>(
+    String(defaultValue ?? "")
+  );
+
+  const displayValue = isControlled
+    ? String(value ?? "")
+    : internalValue;
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const raw = e.target.value.replace(/[^0-9]/g, "");
+      if (!isControlled) setInternalValue(raw);
       onChange?.(raw);
     },
-    [onChange]
+    [isControlled, onChange]
   );
 
   return (
@@ -43,7 +62,7 @@ export function MonetaryInput({ name, value, onChange, placeholder = "$ 0", clas
         type="text"
         inputMode="numeric"
         name={name}
-        value={formatARS(inputValue)}
+        value={formatARS(displayValue)}
         onChange={handleChange}
         placeholder={placeholder}
         required={required}
