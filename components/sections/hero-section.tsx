@@ -8,7 +8,7 @@ export function HeroSection() {
     <section className="hero relative overflow-hidden">
       <div className="mesh-grid absolute inset-0 opacity-70" />
       <div className="hero-glow absolute inset-0 pointer-events-none" />
-      <div className="mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <div className="mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-10 px-5 pb-14 pt-20 sm:px-6 md:pt-28 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <MotionReveal>
           <div>
             <div className="avm-label mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--avm-blue)]/25 bg-[var(--avm-blue)]/10 px-4 py-2 text-sm font-medium">
@@ -16,14 +16,33 @@ export function HeroSection() {
               AVM — Digital Manufacturing
             </div>
             <h1 className="hero-heading">
-              De la pantalla<br />a tus manos.
+              De la pan<span className="highlight">tall</span>a<br />
+              a tus ma<span className="highlight">nos</span>.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="hero-description mt-6">
               Una tienda online premium para comprar impresiones 3D, electronica, pequenos electrodomesticos y solicitar disenos personalizados con experiencia rapida, clara y futurista.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/productos" className="avm-btn-primary" style={{ borderRadius: 9999 }}>
-                Ver catalogo →
+              <Link
+                href="/productos"
+                className="avm-btn-primary"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'var(--avm-blue)',
+                  color: 'var(--avm-bg)',
+                  fontFamily: 'var(--avm-font-display)',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  padding: '12px 24px',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                Ver catálogo →
               </Link>
               <ButtonLink href="/solicitar-diseno" variant="secondary">
                 Solicitar pieza personalizada
