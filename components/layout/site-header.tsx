@@ -31,7 +31,7 @@ export function SiteHeader() {
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="avm-logo" aria-label="Ir al inicio">
           <img src="/svg/avm-isotipo-color.svg" width="36" height="36" alt="AVM" loading="eager" />
-          <div className="avm-logo__text">
+          <div className="avm-logo__text hidden sm:block">
             <span className="avm-logo__wordmark">AVM</span>
             <span className="avm-logo__tagline">Digital Manufacturing</span>
           </div>
@@ -55,7 +55,7 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-0.5">
+        <div className="flex items-center gap-1 sm:gap-0.5">
           <Link
             href="/panel"
             className="avm-btn avm-btn--ghost avm-btn--icon"
@@ -73,8 +73,8 @@ export function SiteHeader() {
           <span className="avm-btn avm-btn--ghost avm-btn--icon">
             <CartCount />
           </span>
-          <ButtonLink href="/solicitar-diseno" variant="secondary" size="sm" className="hidden sm:inline-flex">
-            Cotizar diseno
+          <ButtonLink href="/solicitar-diseno" variant="secondary" size="sm" className="truncate max-w-[90px] sm:max-w-none [font-size:10px] px-2 sm:px-3 sm:text-xs">
+            Cotizar diseño
           </ButtonLink>
           <button
             className="avm-btn avm-btn--ghost avm-btn--icon lg:hidden"

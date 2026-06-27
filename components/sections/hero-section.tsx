@@ -34,7 +34,7 @@ export function HeroSection() {
         </MotionReveal>
 
         <MotionReveal delay={0.12}>
-          <div className="hero-video-panel avm-corner-tl avm-corner-br relative w-full h-full rounded-xl overflow-hidden" style={{ minHeight: '480px' }}>
+          <div className="hero-video-panel avm-corner-tl avm-corner-br relative w-full h-full rounded-xl overflow-hidden min-h-[260px] sm:min-h-[400px] lg:min-h-[480px]">
             <div
               style={{
                 position: 'absolute',
