@@ -1,4 +1,4 @@
-import { Box, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { MotionReveal } from "@/components/ui/motion-reveal";
@@ -20,7 +20,7 @@ export function HeroSection() {
               a tus ma<span className="highlight">nos</span>.
             </h1>
             <p className="hero-description mt-6">
-              Una tienda online premium para comprar impresiones 3D, electronica, pequenos electrodomesticos y solicitar disenos personalizados con experiencia rapida, clara y futurista.
+              Impresiones 3D en PLA+, PETG y resina. Diseño CAD personalizado. Electrónica y automatización. Todo desde un solo lugar, con tiempos reales y sin intermediarios.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -52,15 +52,52 @@ export function HeroSection() {
         </MotionReveal>
 
         <MotionReveal delay={0.12}>
-          <div className="relative min-h-[420px]">
-            <div className="absolute inset-4 rounded-full bg-cyan-400/20 blur-3xl" />
-            <div className="glass relative mx-auto grid aspect-square max-w-[520px] place-items-center rounded-[8px] p-8">
-              <div className="absolute left-6 top-6 rounded-full border border-cyan-300/30 px-3 py-1 text-xs text-cyan-100">PLA+ / PETG / Resina</div>
-              <div className="absolute bottom-6 right-6 rounded-full border border-violet-300/30 px-3 py-1 text-xs text-violet-100">Rewards + puntos</div>
-              <div className="relative grid h-64 w-64 place-items-center rounded-[8px] border border-white/15 bg-gradient-to-br from-white/16 to-white/5 shadow-[inset_0_0_50px_rgba(255,255,255,0.05)]">
-                <Box className="text-cyan-200 drop-shadow-[0_0_28px_rgba(56,245,255,0.7)]" size={132} strokeWidth={1.2} />
-              </div>
+          <div className="hero-video-panel relative w-full h-full rounded-xl overflow-hidden" style={{ minHeight: '420px' }}>
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(135deg, rgba(8,12,20,0.45) 0%, rgba(8,12,20,0.15) 100%)',
+                zIndex: 1,
+                borderRadius: 'inherit',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: '20px',
+                left: '20px',
+                zIndex: 2,
+                background: 'rgba(8,12,20,0.75)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '999px',
+                padding: '6px 16px',
+                fontSize: '12px',
+                fontFamily: 'var(--avm-font-display)',
+                letterSpacing: '0.08em',
+                color: 'rgba(255,255,255,0.75)',
+              }}
+            >
+              PLA+ / PETG / Resina
             </div>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: 'inherit',
+              }}
+            >
+              <source src="/videos/hero-3d-print.webm" type="video/webm" />
+              <source src="/videos/hero-3d-print.mp4" type="video/mp4" />
+            </video>
           </div>
         </MotionReveal>
       </div>

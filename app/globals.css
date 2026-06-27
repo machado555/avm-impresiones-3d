@@ -96,19 +96,22 @@ h1, h2, h3, h4, h5, h6 {
   background: radial-gradient(ellipse at top, rgba(0,178,255,0.08) 0%, transparent 70%);
 }
 
-.hero-description,
-section[class*="hero"] p {
+.hero-description {
   color: var(--avm-muted, #8892A4);
-  font-size: clamp(15px, 2vw, 18px);
+  font-family: var(--avm-font-body);
+  font-size: clamp(15px, 1.8vw, 18px);
   line-height: 1.75;
-  max-width: 560px;
+  max-width: 520px;
 }
 
 @media (max-width: 768px) {
-  .hero-description,
-  section[class*="hero"] p {
+  .hero-description {
     font-size: 15px;
     max-width: 100%;
+  }
+
+  .hero-video-panel {
+    display: none;
   }
 }
 
