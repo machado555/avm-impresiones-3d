@@ -18,18 +18,22 @@ export function CustomProcess() {
           return (
             <MotionReveal key={step.title} delay={index * 0.05}>
               <GlassCard className="h-full">
-                <Icon className="text-cyan-200" size={26} />
-                <p className="mt-5 text-xl font-semibold text-white">{step.title}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-400">{step.description}</p>
+                <div className="avm-card__icon bg-[var(--avm-blue)]/10 text-[var(--avm-blue)]">
+                  <Icon size={20} />
+                </div>
+                <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--avm-muted)]">{step.description}</p>
               </GlassCard>
             </MotionReveal>
           );
         })}
         <MotionReveal delay={0.18}>
-          <div className="flex h-full flex-col justify-between rounded-[8px] border border-cyan-300/25 bg-cyan-300/10 p-5">
-            <p className="text-lg font-semibold text-white">Cotizacion express</p>
-            <p className="mt-3 text-sm leading-6 text-slate-300">Ideal para piezas funcionales, regalos, repuestos, soportes, prototipos y pequenas series.</p>
-            <ButtonLink href="/solicitar-diseno" className="mt-6 w-full">
+          <div className="flex h-full flex-col justify-between rounded-[8px] border border-[var(--avm-blue)]/20 bg-[var(--avm-blue)]/8 p-6 backdrop-blur-[8px]">
+            <div>
+              <p className="text-lg font-semibold text-white">Cotización express</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--avm-muted)]">Ideal para piezas funcionales, regalos, repuestos, soportes, prototipos y pequeñas series.</p>
+            </div>
+            <ButtonLink href="/solicitar-diseno" variant="primary" full className="mt-6">
               Iniciar solicitud
             </ButtonLink>
           </div>

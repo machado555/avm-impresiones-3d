@@ -59,6 +59,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es">
       <head>
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#080C14" />
         <link rel="stylesheet" href="/css/avm-tokens.css" />
         <link rel="stylesheet" href="/css/avm-logo.css" />
       </head>

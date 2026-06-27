@@ -2,47 +2,81 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
 
-const variants = {
-  primary:
-    "bg-gradient-to-r from-[var(--avm-blue)] to-[var(--avm-violet)] text-[var(--avm-bg)] shadow-[0_0_32px_rgba(0,178,255,0.25)] hover:brightness-110 hover:scale-[1.02]",
-  secondary: "glass text-white hover:border-[var(--avm-blue)]/50 hover:bg-white/15",
-  ghost: "text-slate-200 hover:bg-white/10"
+type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
+type ButtonSize = "sm" | "md" | "lg";
+
+type ButtonBase = {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
+  icon?: boolean;
+  full?: boolean;
 };
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: keyof typeof variants;
-};
+type ButtonProps = ButtonBase & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function Button({ className, variant = "primary", ...props }: ButtonProps) {
+export function Button({
+  className,
+  variant = "primary",
+  size = "md",
+  loading,
+  icon,
+  full,
+  disabled,
+  children,
+  ...props
+}: ButtonProps) {
   return (
     <button
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition",
-        variants[variant],
+        "avm-btn",
+        `avm-btn--${variant}`,
+        icon && "avm-btn--icon",
+        full && "avm-btn--full",
+        size === "sm" && "avm-btn--sm",
+        size === "lg" && "avm-btn--lg",
         className
       )}
+      disabled={disabled || loading}
       {...props}
-    />
+    >
+      {loading && <span className="avm-btn__spinner" />}
+      {children}
+    </button>
   );
 }
 
-type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+type ButtonLinkProps = ButtonBase & AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
   children: ReactNode;
-  variant?: keyof typeof variants;
 };
 
-export function ButtonLink({ href, className, variant = "primary", children, ...props }: ButtonLinkProps) {
+export function ButtonLink({
+  href,
+  className,
+  variant = "primary",
+  size = "md",
+  loading,
+  icon,
+  full,
+  children,
+  ...props
+}: ButtonLinkProps) {
   return (
     <Link
       href={href}
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition",
-        variants[variant],
+        "avm-btn",
+        `avm-btn--${variant}`,
+        icon && "avm-btn--icon",
+        full && "avm-btn--full",
+        size === "sm" && "avm-btn--sm",
+        size === "lg" && "avm-btn--lg",
         className
       )}
       {...props}
     >
+      {loading && <span className="avm-btn__spinner" />}
       {children}
     </Link>
   );

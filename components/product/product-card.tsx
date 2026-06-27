@@ -42,7 +42,7 @@ export function ProductCard({ name, category, price, points, description, produc
 
   const cardContent = (
     <>
-      <div className="relative h-48 border-b border-white/10 bg-gradient-to-br from-white/12 via-cyan-300/12 to-violet-400/16">
+      <div className="relative h-48 border-b border-white/[0.06] bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-transparent">
         {image && <Image src={image.url} alt={image.alt ?? displayName} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />}
         {product && (
           <div className="absolute right-3 top-3 z-20">
@@ -51,12 +51,12 @@ export function ProductCard({ name, category, price, points, description, produc
         )}
       </div>
       <div className="p-5">
-        <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">{category ?? "AVM"}</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[var(--avm-blue)]">{category ?? "AVM"}</p>
         <h3 className="mt-3 text-lg font-semibold text-white">{displayName}</h3>
-        <p className="mt-3 text-sm leading-6 text-slate-400">{displayDescription}</p>
+        <p className="mt-3 text-sm leading-6 text-[var(--avm-muted)]">{displayDescription}</p>
         <div className="mt-5 flex items-center justify-between text-sm">
           <span className="font-semibold text-white">{displayPrice}</span>
-          <span className="inline-flex items-center gap-1 text-violet-200">
+          <span className="inline-flex items-center gap-1 text-[var(--avm-violet)]">
             <Star size={15} /> {displayPoints}
           </span>
         </div>
@@ -72,12 +72,12 @@ export function ProductCard({ name, category, price, points, description, produc
   if (product?.slug) {
     return (
       <div className="relative">
-        <GlassCard className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:border-cyan-300/40">
+        <GlassCard className="h-full overflow-hidden p-0">
           {cardContent}
         </GlassCard>
         <Link
           href={`/productos/${product.slug}`}
-          className="absolute inset-0 z-10 cursor-pointer rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
+          className="absolute inset-0 z-10 cursor-pointer rounded-[8px] focus-visible:outline-[2px] focus-visible:outline-[var(--avm-blue)]"
           aria-label={`Ver ${product.name}`}
         />
       </div>
@@ -85,7 +85,7 @@ export function ProductCard({ name, category, price, points, description, produc
   }
 
   return (
-    <GlassCard className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:border-cyan-300/40">
+    <GlassCard className="h-full overflow-hidden p-0">
       {cardContent}
     </GlassCard>
   );
