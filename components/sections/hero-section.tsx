@@ -4,18 +4,18 @@ import { MotionReveal } from "@/components/ui/motion-reveal";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="hero relative overflow-hidden">
       <div className="mesh-grid absolute inset-0 opacity-70" />
+      <div className="hero-glow absolute inset-0 pointer-events-none" />
       <div className="mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <MotionReveal>
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-100">
+            <div className="avm-label mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--avm-blue)]/25 bg-[var(--avm-blue)]/10 px-4 py-2 text-sm font-medium">
               <Sparkles size={16} />
-              Fabricacion digital, objetos tech y piezas a medida
+              AVM — Digital Manufacturing
             </div>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.15] text-white sm:text-6xl lg:text-7xl">
-              AVM-Impresiones 3D
-              <span className="block pb-1 text-gradient">tecnologia hecha tangible.</span>
+            <h1 className="avm-display max-w-4xl text-5xl font-semibold leading-[1.15] text-white sm:text-6xl lg:text-7xl">
+              De la pantalla<br />a tus manos.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Una tienda online premium para comprar impresiones 3D, electronica, pequenos electrodomesticos y solicitar disenos personalizados con experiencia rapida, clara y futurista.

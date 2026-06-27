@@ -6,7 +6,10 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-black/20">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
         <div>
-          <p className="text-lg font-semibold text-white">{siteConfig.name}</p>
+          <a href="/" className="avm-logo avm-logo--sm">
+            <img src="/svg/avm-isotipo-color.svg" width="24" height="24" alt="AVM" />
+            <span className="avm-logo__wordmark" style={{ fontSize: 18 }}>AVM</span>
+          </a>
           <p className="mt-3 max-w-md text-sm leading-6 text-slate-400">
             Tienda online premium para impresion 3D, productos tech y soluciones personalizadas con foco en calidad, velocidad y detalle.
           </p>

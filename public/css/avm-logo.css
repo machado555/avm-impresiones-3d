@@ -1,0 +1,88 @@
+/*
+ * ═══════════════════════════════════════════════
+ *  AVM — Logo Component CSS
+ *  Copiar junto con avm-tokens.css
+ * ═══════════════════════════════════════════════
+ */
+
+/* ── LOGO WRAPPER ── */
+.avm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.avm-logo__icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.avm-logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.avm-logo__wordmark {
+  font-family: var(--avm-font-display, 'Space Grotesk', sans-serif);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: var(--avm-white, #fff);
+}
+
+.avm-logo__tagline {
+  font-family: var(--avm-font-display, 'Space Grotesk', sans-serif);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--avm-muted, #8892A4);
+  white-space: nowrap;
+}
+
+/* ── TAMAÑOS ── */
+.avm-logo--sm .avm-logo__wordmark  { font-size: 18px; }
+.avm-logo--sm .avm-logo__tagline   { display: none; }
+.avm-logo--sm                      { gap: 10px; }
+
+.avm-logo--lg .avm-logo__wordmark  { font-size: 36px; }
+.avm-logo--lg .avm-logo__tagline   { font-size: 9px; }
+.avm-logo--lg                      { gap: 20px; }
+
+/* ── VARIANTE SOLO ISOTIPO (sin texto) ── */
+.avm-logo--icon-only .avm-logo__text { display: none; }
+
+/* ── VARIANTE APILADA ── */
+.avm-logo--stacked {
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.avm-logo--stacked .avm-logo__text {
+  align-items: center;
+}
+
+/* ── SOBRE FONDO CLARO ── */
+.avm-logo--light .avm-logo__wordmark { color: #080C14; }
+.avm-logo--light .avm-logo__tagline  { color: rgba(8,12,20,0.45); }
+
+/* ── NAV TIPICO ── */
+.avm-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: sticky;
+  top: 0;
+  z-index: var(--avm-z-nav, 50);
+}

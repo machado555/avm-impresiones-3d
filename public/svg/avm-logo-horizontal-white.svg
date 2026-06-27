@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" fill="none">
+  <g transform="translate(0, -8) scale(0.5)">
+    <path d="M80 28 L26 72 L80 88 Z" fill="rgba(255,255,255,0.95)"/>
+    <path d="M80 28 L134 72 L80 88 Z" fill="rgba(255,255,255,0.60)"/>
+    <path d="M26 72 L80 132 L134 72 L80 88 Z" fill="rgba(255,255,255,0.25)"/>
+  </g>
+  <line x1="88" y1="18" x2="88" y2="62" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="104" y="52" font-family="'Space Grotesk','Inter',system-ui,sans-serif" font-size="38" font-weight="600" letter-spacing="6" fill="#FFFFFF">AVM</text>
+  <text x="106" y="68" font-family="'Space Grotesk','Inter',system-ui,sans-serif" font-size="8" font-weight="400" letter-spacing="4" fill="rgba(255,255,255,0.35)">DIGITAL MANUFACTURING</text>
+</svg>

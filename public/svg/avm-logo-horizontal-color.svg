@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" fill="none">
+  <defs>
+    <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00B2FF"/>
+      <stop offset="100%" stop-color="#7B61FF"/>
+    </linearGradient>
+    <linearGradient id="gB" x1="1" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#00B2FF" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#7B61FF" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="gC" x1="0" y1="0.8" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4B3F9E" stop-opacity="0.70"/>
+      <stop offset="100%" stop-color="#00B2FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ISOTIPO centrado verticalmente en 80px de alto -->
+  <!-- Escala: símbolo original 160x160 → ~64px alto. Translate para centrar -->
+  <g transform="translate(0, -8) scale(0.5)">
+    <path d="M80 28 L26 72 L80 88 Z" fill="url(#gA)"/>
+    <path d="M80 28 L134 72 L80 88 Z" fill="url(#gB)"/>
+    <path d="M26 72 L80 132 L134 72 L80 88 Z" fill="url(#gC)"/>
+  </g>
+
+  <!-- SEPARADOR vertical -->
+  <line x1="88" y1="18" x2="88" y2="62" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- WORDMARK AVM -->
+  <text
+    x="104"
+    y="52"
+    font-family="'Space Grotesk', 'Inter', system-ui, sans-serif"
+    font-size="38"
+    font-weight="600"
+    letter-spacing="6"
+    fill="#FFFFFF"
+  >AVM</text>
+
+  <!-- TAGLINE -->
+  <text
+    x="106"
+    y="68"
+    font-family="'Space Grotesk', 'Inter', system-ui, sans-serif"
+    font-size="8"
+    font-weight="400"
+    letter-spacing="4"
+    fill="rgba(255,255,255,0.35)"
+  >DIGITAL MANUFACTURING</text>
+</svg>

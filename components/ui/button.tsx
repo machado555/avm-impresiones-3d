@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils/cn";
 
 const variants = {
   primary:
-    "bg-gradient-to-r from-[var(--avm-blue)] to-[var(--avm-violet)] text-white shadow-[0_0_32px_rgba(33,167,255,0.25)] hover:scale-[1.02]",
-  secondary: "glass text-white hover:border-cyan-300/50 hover:bg-white/15",
+    "bg-gradient-to-r from-[var(--avm-blue)] to-[var(--avm-violet)] text-[var(--avm-bg)] shadow-[0_0_32px_rgba(0,178,255,0.25)] hover:brightness-110 hover:scale-[1.02]",
+  secondary: "glass text-white hover:border-[var(--avm-blue)]/50 hover:bg-white/15",
   ghost: "text-slate-200 hover:bg-white/10"
 };
 

@@ -1,0 +1,236 @@
+/*
+ * ═══════════════════════════════════════════════
+ *  AVM — Brand Design Tokens
+ *  Vertex Fold Identity System · 2025
+ *  Incluir en tu proyecto: <link rel="stylesheet" href="avm-tokens.css">
+ * ═══════════════════════════════════════════════
+ */
+
+/* ── GOOGLE FONTS IMPORT ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+
+  /* ── COLORES PRINCIPALES ── */
+  --avm-blue:       #00B2FF;   /* Electric Blue  — primario */
+  --avm-violet:     #7B61FF;   /* Tech Violet    — secundario */
+  --avm-bg:         #080C14;   /* Deep Space     — fondo principal */
+  --avm-surface:    #0D1220;   /* Surface        — fondo secundario */
+  --avm-surface-2:  #111827;   /* Surface 2      — cards, modals */
+  --avm-white:      #FFFFFF;
+  --avm-frost:      #E2E8F0;   /* Texto sobre oscuro */
+  --avm-muted:      #8892A4;   /* Texto secundario */
+  --avm-border:     rgba(255, 255, 255, 0.07);
+
+  /* ── GRADIENTES ── */
+  --avm-gradient-primary:  linear-gradient(135deg, #00B2FF 0%, #7B61FF 100%);
+  --avm-gradient-dark:     linear-gradient(135deg, #080C14 0%, #0D1628 100%);
+  --avm-gradient-glow:     radial-gradient(ellipse at top, rgba(0,178,255,0.08) 0%, transparent 70%);
+
+  /* ── TIPOGRAFÍA ── */
+  --avm-font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --avm-font-body:    'Inter', 'Space Grotesk', system-ui, sans-serif;
+
+  /* Tamaños (escala modular 1.25) */
+  --avm-text-xs:   0.625rem;   /*  10px */
+  --avm-text-sm:   0.75rem;    /*  12px */
+  --avm-text-base: 0.9375rem;  /*  15px */
+  --avm-text-lg:   1.125rem;   /*  18px */
+  --avm-text-xl:   1.375rem;   /*  22px */
+  --avm-text-2xl:  1.75rem;    /*  28px */
+  --avm-text-3xl:  2.25rem;    /*  36px */
+  --avm-text-4xl:  3rem;       /*  48px */
+  --avm-text-5xl:  4rem;       /*  64px */
+
+  /* Pesos */
+  --avm-weight-light:   300;
+  --avm-weight-regular: 400;
+  --avm-weight-medium:  500;
+  --avm-weight-semibold:600;
+
+  /* Letter spacing */
+  --avm-tracking-tight:  -0.02em;
+  --avm-tracking-normal:  0;
+  --avm-tracking-wide:    0.05em;
+  --avm-tracking-wider:   0.12em;
+  --avm-tracking-widest:  0.30em;
+
+  /* ── ESPACIADO ── */
+  --avm-space-1:  4px;
+  --avm-space-2:  8px;
+  --avm-space-3:  12px;
+  --avm-space-4:  16px;
+  --avm-space-5:  24px;
+  --avm-space-6:  32px;
+  --avm-space-7:  48px;
+  --avm-space-8:  64px;
+  --avm-space-9:  80px;
+  --avm-space-10: 120px;
+
+  /* ── BORDES ── */
+  --avm-radius-sm:  2px;
+  --avm-radius-md:  4px;
+  --avm-radius-lg:  8px;
+  --avm-radius-full:9999px;
+
+  /* ── SOMBRAS ── */
+  --avm-shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --avm-shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+  --avm-shadow-lg:  0 8px 32px rgba(0,0,0,0.6);
+  --avm-shadow-blue: 0 0 24px rgba(0,178,255,0.15);
+  --avm-shadow-glow: 0 0 48px rgba(0,178,255,0.08);
+
+  /* ── TRANSICIONES ── */
+  --avm-ease:         cubic-bezier(0.16, 1, 0.3, 1);
+  --avm-ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --avm-ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --avm-duration-fast:   150ms;
+  --avm-duration-base:   250ms;
+  --avm-duration-slow:   400ms;
+
+  /* ── Z-INDEX ── */
+  --avm-z-base:    0;
+  --avm-z-above:   10;
+  --avm-z-modal:   100;
+  --avm-z-toast:   200;
+  --avm-z-nav:     50;
+}
+
+
+/* ═══════════════════════════════════════════════
+   CLASES UTILITARIAS OPCIONALES
+   ═══════════════════════════════════════════════ */
+
+/* Reset base recomendado */
+.avm-reset {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fondos */
+.avm-bg-deep    { background-color: var(--avm-bg); }
+.avm-bg-surface { background-color: var(--avm-surface); }
+.avm-bg-surface2{ background-color: var(--avm-surface-2); }
+.avm-bg-gradient{ background: var(--avm-gradient-dark); }
+
+/* Textos */
+.avm-text-blue   { color: var(--avm-blue); }
+.avm-text-violet { color: var(--avm-violet); }
+.avm-text-white  { color: var(--avm-white); }
+.avm-text-frost  { color: var(--avm-frost); }
+.avm-text-muted  { color: var(--avm-muted); }
+
+/* Tipografía display */
+.avm-display {
+  font-family: var(--avm-font-display);
+  font-weight: var(--avm-weight-semibold);
+  letter-spacing: var(--avm-tracking-tight);
+  line-height: 1.05;
+  color: var(--avm-white);
+}
+
+/* Label / eyebrow */
+.avm-label {
+  font-family: var(--avm-font-display);
+  font-size: var(--avm-text-xs);
+  font-weight: var(--avm-weight-medium);
+  letter-spacing: var(--avm-tracking-widest);
+  text-transform: uppercase;
+  color: var(--avm-blue);
+}
+
+/* Body text */
+.avm-body {
+  font-family: var(--avm-font-body);
+  font-size: var(--avm-text-base);
+  font-weight: var(--avm-weight-regular);
+  line-height: 1.7;
+  color: var(--avm-muted);
+}
+
+/* Botón primario */
+.avm-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--avm-blue);
+  color: var(--avm-bg);
+  font-family: var(--avm-font-display);
+  font-size: var(--avm-text-sm);
+  font-weight: var(--avm-weight-semibold);
+  letter-spacing: var(--avm-tracking-wide);
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  transition: filter var(--avm-duration-base) var(--avm-ease);
+  text-decoration: none;
+}
+.avm-btn-primary:hover {
+  filter: brightness(1.12);
+}
+
+/* Botón outline */
+.avm-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--avm-white);
+  font-family: var(--avm-font-display);
+  font-size: var(--avm-text-sm);
+  font-weight: var(--avm-weight-medium);
+  letter-spacing: var(--avm-tracking-wide);
+  padding: 11px 24px;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: border-color var(--avm-duration-base) var(--avm-ease),
+              color var(--avm-duration-base) var(--avm-ease);
+  text-decoration: none;
+}
+.avm-btn-outline:hover {
+  border-color: var(--avm-blue);
+  color: var(--avm-blue);
+}
+
+/* Card */
+.avm-card {
+  background: var(--avm-surface);
+  border: 1px solid var(--avm-border);
+  padding: var(--avm-space-6);
+  transition: border-color var(--avm-duration-base) var(--avm-ease);
+}
+.avm-card:hover {
+  border-color: rgba(0, 178, 255, 0.2);
+}
+
+/* Divider */
+.avm-divider {
+  border: none;
+  border-top: 1px solid var(--avm-border);
+  margin: var(--avm-space-7) 0;
+}
+
+/* Badge */
+.avm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 178, 255, 0.1);
+  border: 1px solid rgba(0, 178, 255, 0.25);
+  color: var(--avm-blue);
+  font-family: var(--avm-font-display);
+  font-size: var(--avm-text-xs);
+  font-weight: var(--avm-weight-medium);
+  letter-spacing: var(--avm-tracking-wider);
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+
+/* Gradient text */
+.avm-gradient-text {
+  background: var(--avm-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
