@@ -32,30 +32,30 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-1 lg:flex">
           {siteConfig.navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="cursor-pointer rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+            <Link key={item.href} href={item.href} className="cursor-pointer rounded-full px-4 py-2 text-sm text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)]">
               {item.label}
             </Link>
           ))}
-          <Link href="/terminos-y-condiciones" className="cursor-pointer rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white">
+          <Link href="/terminos-y-condiciones" className="cursor-pointer rounded-full px-4 py-2 text-sm text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)]">
             Legal
           </Link>
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/panel" className="hidden cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Panel de usuario">
+          <Link href="/panel" className="hidden cursor-pointer rounded-full p-2 text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)] sm:inline-flex" aria-label="Panel de usuario">
             <UserRound size={20} />
           </Link>
-          <Link href="/favoritos" className="hidden cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Ver favoritos">
+          <Link href="/favoritos" className="hidden cursor-pointer rounded-full p-2 text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)] sm:inline-flex" aria-label="Ver favoritos">
             <FavoritesCount />
           </Link>
-          <span className="rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white">
+          <span className="rounded-full p-2 text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)]">
             <CartCount />
           </span>
           <ButtonLink href="/solicitar-diseno" className="hidden sm:inline-flex">
             Cotizar diseno
           </ButtonLink>
           <button
-            className="cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-white/10 hover:text-white lg:hidden"
+            className="cursor-pointer rounded-full p-2 text-white transition hover:bg-white/10 hover:text-[var(--avm-blue)] lg:hidden"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -72,7 +72,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex cursor-pointer px-5 py-4 text-sm text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+                className="flex cursor-pointer px-5 py-4 text-sm text-white transition hover:bg-white/[0.06] hover:text-[var(--avm-blue)]"
               >
                 {item.label}
               </Link>

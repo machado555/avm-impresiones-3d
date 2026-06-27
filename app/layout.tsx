@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Syne, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
@@ -9,6 +10,20 @@ import { AuthStoreSync } from "@/features/auth/components/auth-store-sync";
 import { ToastProvider } from "@/components/ui/toast-provider";
 import { getCurrentProfile } from "@/features/auth/data/get-current-profile";
 import "./globals.css";
+
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001"),
@@ -44,16 +59,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
         <link rel="stylesheet" href="/css/avm-tokens.css" />
         <link rel="stylesheet" href="/css/avm-logo.css" />
       </head>
-      <body>
+      <body className={`${syne.variable} ${inter.variable}`}>
         <AuthStoreSync user={user} />
         <ToastProvider>
           <SiteHeader />

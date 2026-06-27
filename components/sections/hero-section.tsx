@@ -1,4 +1,5 @@
-import { ArrowRight, Box, Sparkles } from "lucide-react";
+import { Box, Sparkles } from "lucide-react";
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 
@@ -14,16 +15,16 @@ export function HeroSection() {
               <Sparkles size={16} />
               AVM — Digital Manufacturing
             </div>
-            <h1 className="avm-display max-w-4xl text-5xl font-semibold leading-[1.15] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="hero-heading">
               De la pantalla<br />a tus manos.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Una tienda online premium para comprar impresiones 3D, electronica, pequenos electrodomesticos y solicitar disenos personalizados con experiencia rapida, clara y futurista.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/productos">
-                Ver catalogo <ArrowRight size={18} />
-              </ButtonLink>
+              <Link href="/productos" className="avm-btn-primary" style={{ borderRadius: 9999 }}>
+                Ver catalogo →
+              </Link>
               <ButtonLink href="/solicitar-diseno" variant="secondary">
                 Solicitar pieza personalizada
               </ButtonLink>
