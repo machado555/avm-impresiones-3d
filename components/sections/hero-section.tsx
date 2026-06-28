@@ -16,8 +16,7 @@ export function HeroSection() {
               AVM — Digital Manufacturing
             </div>
             <h1 className="hero-heading">
-              De la pan<span className="highlight">tall</span>a<br />
-              a tus ma<span className="highlight">nos</span>.
+              De la pantalla<br />a tus manos.
             </h1>
             <p className="hero-description mt-6">
               Impresiones 3D en PLA+, PETG y resina. Diseño CAD personalizado. Electrónica y automatización. Todo desde un solo lugar, con tiempos reales y sin intermediarios.

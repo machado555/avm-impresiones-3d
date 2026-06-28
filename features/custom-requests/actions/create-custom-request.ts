@@ -79,9 +79,5 @@ export async function createCustomRequest(formData: FormData) {
     metadata: { requestNumber: data.request_number }
   });
 
-  if (user) {
-    redirect(`/solicitudes/${data.request_number}`);
-  }
-
-  redirect(`/solicitar-diseno?requestNumber=${data.request_number}`);
+  redirect(`/cotizar/confirmacion`);
 }

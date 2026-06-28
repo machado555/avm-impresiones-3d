@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Menu, UserRound, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ButtonLink } from "@/components/ui/button";
 import { CartCount } from "@/features/cart/components/cart-count";
 import { FavoritesCount } from "@/features/favorites/components/favorites-count";
 import { siteConfig } from "@/lib/constants/site";
@@ -37,7 +36,7 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-0.5 lg:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {siteConfig.navItems.map((item) => (
             <Link
               key={item.href}
@@ -73,11 +72,28 @@ export function SiteHeader() {
           <span className="avm-btn avm-btn--ghost avm-btn--icon">
             <CartCount />
           </span>
-          <ButtonLink href="/solicitar-diseno" variant="secondary" size="sm" className="truncate max-w-[90px] sm:max-w-none [font-size:10px] px-2 sm:px-3 sm:text-xs">
+          <Link
+            href="/solicitar-diseno"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'var(--avm-blue)',
+              color: 'var(--avm-bg)',
+              fontFamily: 'var(--avm-font-display)',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
+              padding: '9px 20px',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
             Cotizar diseño
-          </ButtonLink>
+          </Link>
           <button
-            className="avm-btn avm-btn--ghost avm-btn--icon lg:hidden"
+            className="avm-btn avm-btn--ghost avm-btn--icon md:hidden"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -87,7 +103,7 @@ export function SiteHeader() {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-white/[0.04] lg:hidden">
+        <div className="border-t border-white/[0.04] md:hidden">
           <div className="mx-4 mb-4 mt-2 overflow-hidden rounded-[12px] border border-white/[0.06] bg-[rgba(255,255,255,0.03)] backdrop-blur-2xl">
             {mobileLinks.map((item) => (
               <Link

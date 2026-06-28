@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Syne, Inter } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
@@ -11,7 +11,7 @@ import { ToastProvider } from "@/components/ui/toast-provider";
 import { getCurrentProfile } from "@/features/auth/data/get-current-profile";
 import "./globals.css";
 
-const syne = Syne({
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-display",
@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <link rel="stylesheet" href="/css/avm-tokens.css" />
         <link rel="stylesheet" href="/css/avm-logo.css" />
       </head>
-      <body className={`${syne.variable} ${inter.variable}`}>
+      <body className={`${outfit.variable} ${inter.variable}`}>
         <AuthStoreSync user={user} />
         <ToastProvider>
           <SiteHeader />
