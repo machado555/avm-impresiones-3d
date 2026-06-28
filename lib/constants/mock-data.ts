@@ -34,6 +34,7 @@ export const categories = [
 export const featuredProducts = [
   {
     name: "Soporte modular AVM-X",
+    slug: "soporte-modular-avm-x",
     category: "Impresion 3D",
     price: "$18.900",
     points: 180,
@@ -41,6 +42,7 @@ export const featuredProducts = [
   },
   {
     name: "Kit sensores Maker",
+    slug: "kit-sensores-maker",
     category: "Electronica",
     price: "$32.500",
     points: 320,
@@ -48,6 +50,7 @@ export const featuredProducts = [
   },
   {
     name: "Mini selladora compacta",
+    slug: "mini-selladora-compacta",
     category: "Electrodomesticos",
     price: "$24.200",
     points: 240,
