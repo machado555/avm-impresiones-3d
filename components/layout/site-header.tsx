@@ -72,26 +72,28 @@ export function SiteHeader() {
           <span className="avm-btn avm-btn--ghost avm-btn--icon">
             <CartCount />
           </span>
-          <Link
-            href="/solicitar-diseno"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'var(--avm-blue)',
-              color: 'var(--avm-bg)',
-              fontFamily: 'var(--avm-font-display)',
-              fontSize: '13px',
-              fontWeight: 600,
-              letterSpacing: '0.04em',
-              padding: '9px 20px',
-              borderRadius: '6px',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Cotizar diseño
-          </Link>
+          <span className="max-[400px]:hidden">
+            <Link
+              href="/solicitar-diseno"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'var(--avm-blue)',
+                color: 'var(--avm-bg)',
+                fontFamily: 'var(--avm-font-display)',
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                padding: '9px 20px',
+                borderRadius: '6px',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Cotizar diseño
+            </Link>
+          </span>
           <button
             className="avm-btn avm-btn--ghost avm-btn--icon md:hidden"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}

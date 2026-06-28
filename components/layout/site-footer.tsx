@@ -41,6 +41,15 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
+      <div style={{
+        borderTop: '1px solid rgba(255,255,255,0.04)',
+        padding: '20px 24px',
+        textAlign: 'center',
+        fontSize: '13px',
+        color: 'var(--avm-muted)',
+      }}>
+        &copy; 2026 AVM &mdash; Todos los derechos reservados.
+      </div>
     </footer>
   );
 }

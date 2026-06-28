@@ -1,8 +1,14 @@
+"use client";
+
+import { useCallback } from "react";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 import { Section } from "@/components/ui/section";
 import { featuredProducts } from "@/lib/constants/mock-data";
+import { addGuestCartItem, openCartDrawer } from "@/lib/stores/cart-store";
+import { addToast } from "@/lib/stores/toast-store";
+import type { CartItem } from "@/types/cart";
 import type { Product } from "@/types/products";
 import Link from "next/link";
 
@@ -14,6 +20,25 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
   const hasRealProducts = products.length > 0;
   const items = hasRealProducts ? products : featuredProducts;
 
+  const handleAddToCart = useCallback((product: Record<string, unknown> & { name: string; slug: string; price: number | string; points?: number; pointsReward?: number }) => {
+    const rawPrice = typeof product.price === "number" ? product.price : parseInt(String(product.price).replace(/[^0-9]/g, ""), 10);
+    const guestItem: CartItem = {
+      id: `${product.slug}:base`,
+      productId: product.slug,
+      variantId: null,
+      name: product.name,
+      slug: product.slug,
+      imageUrl: null,
+      quantity: 1,
+      unitPrice: isNaN(rawPrice) ? 0 : rawPrice,
+      estimatedPoints: product.points ?? product.pointsReward ?? 0,
+      variantSnapshot: null
+    };
+    addGuestCartItem(guestItem, 999);
+    addToast("success", "Producto agregado al carrito.");
+    openCartDrawer();
+  }, []);
+
   return (
     <Section
       eyebrow="Destacados"
@@ -22,12 +47,11 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((product, index) => {
-          const image = "images" in product ? product.images?.[0] : null;
+          const image = "images" in product ? (product as Product).images?.[0] : null;
           const name = product.name;
-          const category = "category" in product ? product.category : "AVM";
+          const category = "category" in product ? product.category as string : "AVM";
           const price = "price" in product && typeof product.price === "number" ? formatPrice(product.price) : product.price;
-          const description = "shortDescription" in product ? product.shortDescription ?? product.description ?? "" : product.description;
-          const points = "pointsReward" in product ? product.pointsReward : product.points;
+          const description = "shortDescription" in product ? (product.shortDescription ?? product.description ?? "") : product.description;
           const slug = product.slug;
 
           return (
@@ -59,9 +83,13 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
                     Ver detalle →
                   </Link>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <button
+                    <Link
+                      href={`/productos/${slug}`}
                       style={{
                         flex: 1,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         background: 'var(--avm-blue)',
                         color: 'var(--avm-bg)',
                         fontFamily: 'var(--avm-font-display)',
@@ -72,11 +100,13 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
                         borderRadius: '4px',
                         cursor: 'pointer',
                         letterSpacing: '0.03em',
+                        textDecoration: 'none',
                       }}
                     >
                       Comprar
-                    </button>
+                    </Link>
                     <button
+                      onClick={() => handleAddToCart(product as Record<string, unknown> & { name: string; slug: string; price: number | string; points?: number; pointsReward?: number })}
                       style={{
                         flex: 1,
                         background: 'transparent',
