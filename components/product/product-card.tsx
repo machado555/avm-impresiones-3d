@@ -25,7 +25,7 @@ export function ProductCard({ name, category, price, points, description, produc
   const displayDescription = product?.shortDescription ?? product?.description ?? description ?? "";
   const displayPrice = product ? formatPrice(product.price) : price ?? "";
   const displayPoints = product?.pointsReward ?? points ?? 0;
-  const image = product?.images?.[0];
+  const image = product?.images?.[0]?.url ? product.images[0] : null;
   const maxStock = product?.variants?.[0]?.stock ?? product?.stock ?? 0;
   const guestItem = product
     ? {
