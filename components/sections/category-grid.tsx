@@ -1,8 +1,16 @@
+import { Cpu, Pencil, Printer, Zap } from "lucide-react";
 import { categories } from "@/lib/constants/mock-data";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 import { Section } from "@/components/ui/section";
 import type { ProductCategory } from "@/types/products";
+
+const CATEGORY_ICONS: Record<string, { icon: React.ElementType; accent: string }> = {
+  'impresiones-3d':          { icon: Printer, accent: 'from-[var(--avm-blue)] to-[var(--avm-violet)]' },
+  'electronica':             { icon: Cpu,     accent: 'from-[var(--avm-violet)] to-[var(--avm-blue)]' },
+  'pequenos-electrodomesticos': { icon: Zap,  accent: 'from-[var(--avm-blue)] to-[var(--avm-violet)]' },
+  'diseno-personalizado':    { icon: Pencil,  accent: 'from-[var(--avm-violet)] to-[var(--avm-blue)]' },
+}
 
 type CategoryGridProps = {
   categoriesData?: ProductCategory[];
@@ -20,8 +28,11 @@ export function CategoryGrid({ categoriesData = [] }: CategoryGridProps) {
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {items.map((category, index) => {
-          const Icon = "icon" in category ? category.icon : null;
-          const accent = "accent" in category ? category.accent : "from-[var(--avm-blue)] to-[var(--avm-violet)]";
+          const meta = CATEGORY_ICONS[category.slug] ?? {}
+          const Icon = ("icon" in category ? category.icon : null) ?? meta.icon ?? null
+          const accent = ("accent" in category ? category.accent : null)
+                         ?? meta.accent
+                         ?? 'from-[var(--avm-blue)] to-[var(--avm-violet)]'
 
           return (
             <MotionReveal key={category.slug} delay={index * 0.05}>
