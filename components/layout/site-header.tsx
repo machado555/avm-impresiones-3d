@@ -26,7 +26,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/[0.04] bg-[#050712]/70 backdrop-blur-2xl">
+    <header className="sticky top-0 z-40 w-full overflow-x-hidden border-b border-white/[0.04] bg-[#050712]/70 backdrop-blur-2xl">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="avm-logo" aria-label="Ir al inicio">
           <img src="/svg/avm-isotipo-color.svg" width="36" height="36" alt="AVM" loading="eager" />
@@ -72,7 +72,7 @@ export function SiteHeader() {
           <span className="avm-btn avm-btn--ghost avm-btn--icon">
             <CartCount />
           </span>
-          <span className="max-[400px]:hidden">
+          <span className="hidden md:inline-flex">
             <Link
               href="/solicitar-diseno"
               style={{
