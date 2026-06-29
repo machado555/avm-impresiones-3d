@@ -90,7 +90,8 @@ export function mapProduct(row: ProductRow): Product {
     images: mapImages(row.product_images ?? []),
     variants: mapVariants(row.product_variants ?? []),
     tags: mapTags(row.product_tags ?? []),
-    category: mapCategory(row.categories)
+    category: mapCategory(row.categories),
+    categoryName: mapCategory(row.categories)?.name ?? null
   };
 }
 

@@ -49,7 +49,7 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
         {items.map((product, index) => {
           const image = "images" in product ? (product as Product).images?.[0] : null;
           const name = product.name;
-          const category = "category" in product ? product.category as string : "AVM";
+          const category = (product as Product).categoryName ?? ("category" in product ? product.category as string : "AVM");
           const price = "price" in product && typeof product.price === "number" ? formatPrice(product.price) : product.price;
           const description = "shortDescription" in product ? (product.shortDescription ?? product.description ?? "") : product.description;
           const slug = product.slug;
