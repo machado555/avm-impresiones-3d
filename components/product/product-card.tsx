@@ -1,9 +1,8 @@
-import { Star } from "lucide-react";
+import { Heart, Package, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { AddToCartButton } from "@/features/cart/components/add-to-cart-button";
-import { FavoriteButton } from "@/features/favorites/components/favorite-button";
 import type { Product } from "@/types/products";
 
 type ProductCardProps = Partial<{
@@ -43,12 +42,21 @@ export function ProductCard({ name, category, price, points, description, produc
   const cardContent = (
     <>
       <div className="relative h-48 border-b border-white/[0.06] bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-transparent">
-        {image && <Image src={image.url} alt={image.alt ?? displayName} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />}
-        {product && (
-          <div className="absolute right-3 top-3 z-20">
-            <FavoriteButton productId={product.id} initialIsFavorite={isFavorite} isAuthenticated={isAuthenticated} />
+        {image ? (
+          <Image src={image.url} alt={image.alt ?? displayName} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center bg-[var(--avm-surface)]">
+            <Package size={48} className="text-gray-600" />
+            <span className="mt-2 text-xs text-gray-500">Sin imagen</span>
           </div>
         )}
+        <button
+          onClick={() => console.log("Favorito:", displayName)}
+          className="absolute right-3 top-3 z-20 rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60"
+          aria-label="Agregar a favoritos"
+        >
+          <Heart size={16} />
+        </button>
       </div>
       <div className="p-5">
         <p className="text-xs uppercase tracking-[0.2em] text-[var(--avm-blue)]">{category ?? "AVM"}</p>
