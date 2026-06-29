@@ -28,7 +28,7 @@ export default async function AdminProductsPage() {
             <tr>
               <th className="px-4 py-3">Imagen</th>
               <th className="px-4 py-3">Nombre</th>
-              <th className="px-4 py-3">Categoria</th>
+              <th className="px-4 py-3">Categoría</th>
               <th className="px-4 py-3">Precio</th>
               <th className="px-4 py-3">Oferta</th>
               <th className="px-4 py-3">Estado</th>

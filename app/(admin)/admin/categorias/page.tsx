@@ -35,7 +35,7 @@ export default async function AdminCategoriesPage() {
 
   return (
     <AdminShell>
-      <AdminSectionHeader title="Categorias" description="Gestiona las categorias de productos." />
+      <AdminSectionHeader title="Categorías" description="Gestiona las categorías de productos." />
       <form action={handleCreate} className="mb-6 flex gap-3">
         <input name="name" placeholder="Nombre" required className="flex-1 rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none" />
         <input name="slug" placeholder="slug" required className="flex-1 rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none" />

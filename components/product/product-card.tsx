@@ -1,10 +1,11 @@
 "use client";
 
-import { Heart, Package, Star } from "lucide-react";
+import { Package, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { AddToCartButton } from "@/features/cart/components/add-to-cart-button";
+import { FavoriteButton } from "@/features/favorites/components/favorite-button";
 import type { Product } from "@/types/products";
 
 type ProductCardProps = Partial<{
@@ -52,13 +53,11 @@ export function ProductCard({ name, category, price, points, description, produc
             <span className="mt-2 text-xs text-gray-500">Sin imagen</span>
           </div>
         )}
-        <button
-          onClick={() => console.log("Favorito:", displayName)}
-          className="absolute right-3 top-3 z-20 rounded-full bg-black/40 p-2 text-white transition hover:bg-black/60"
-          aria-label="Agregar a favoritos"
-        >
-          <Heart size={16} />
-        </button>
+        {product && (
+          <div className="absolute right-3 top-3 z-20">
+            <FavoriteButton productId={product.id} initialIsFavorite={isFavorite} isAuthenticated={isAuthenticated} />
+          </div>
+        )}
       </div>
       <div className="p-5">
         <p className="text-xs uppercase tracking-[0.2em] text-[var(--avm-blue)]">{category ?? "AVM"}</p>

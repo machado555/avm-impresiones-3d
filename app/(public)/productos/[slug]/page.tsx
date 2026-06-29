@@ -68,7 +68,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             color: "var(--avm-blue)",
             fontFamily: "var(--avm-font-display)",
           }}>
-            {product.categoryId ?? "Producto destacado"}
+            {product.category?.name ?? "Producto destacado"}
           </span>
           <h1 style={{
             fontFamily: "var(--avm-font-display)",

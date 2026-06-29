@@ -47,5 +47,10 @@ export const productSelect = `
       name,
       slug
     )
+  ),
+  categories (
+    id,
+    name,
+    slug
   )
 `;

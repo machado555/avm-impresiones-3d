@@ -22,7 +22,7 @@ export default async function AdminBlogPage() {
           <thead className="border-b border-white/10 bg-white/[0.04] text-left text-xs uppercase tracking-wider text-slate-500">
             <tr>
               <th className="px-4 py-3">Titulo</th>
-              <th className="px-4 py-3">Categoria</th>
+              <th className="px-4 py-3">Categoría</th>
               <th className="px-4 py-3">Estado</th>
               <th className="px-4 py-3">Fecha</th>
               <th className="px-4 py-3">Acciones</th>

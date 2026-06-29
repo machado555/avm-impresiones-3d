@@ -1,5 +1,11 @@
 import type { Product, ProductImage, ProductTag, ProductVariant } from "@/types/products";
 
+type CategoryRow = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
 type ProductRow = {
   id: string;
   category_id: string | null;
@@ -26,6 +32,7 @@ type ProductRow = {
   product_images?: ProductImageRow[];
   product_variants?: ProductVariantRow[];
   product_tags?: Array<{ tags: ProductTagRow | null }>;
+  categories?: CategoryRow | CategoryRow[] | null;
 };
 
 type ProductImageRow = {
@@ -82,8 +89,15 @@ export function mapProduct(row: ProductRow): Product {
     seoDescription: row.seo_description,
     images: mapImages(row.product_images ?? []),
     variants: mapVariants(row.product_variants ?? []),
-    tags: mapTags(row.product_tags ?? [])
+    tags: mapTags(row.product_tags ?? []),
+    category: mapCategory(row.categories)
   };
+}
+
+function mapCategory(cat: CategoryRow | CategoryRow[] | null | undefined): CategoryRow | null {
+  if (!cat) return null;
+  if (Array.isArray(cat)) return cat[0] ?? null;
+  return cat;
 }
 
 function mapImages(rows: ProductImageRow[]): ProductImage[] {

@@ -64,6 +64,7 @@ export type ProductCategory = {
 export type Product = {
   id: string;
   categoryId?: string | null;
+  category?: { id: string; name: string; slug: string } | null;
   name: string;
   slug: string;
   description?: string | null;

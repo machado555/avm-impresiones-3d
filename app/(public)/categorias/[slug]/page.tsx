@@ -19,9 +19,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <Section
-      eyebrow="Categoria"
-      title={category?.name ?? "Categoria AVM"}
-      description={category?.description ?? "Productos disponibles en esta categoria."}
+      eyebrow="Categoría"
+      title={category?.name ?? "Categoría AVM"}
+      description={category?.description ?? "Productos disponibles en esta categoría."}
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product: Awaited<ReturnType<typeof getProductsByCategory>>[number]) => (

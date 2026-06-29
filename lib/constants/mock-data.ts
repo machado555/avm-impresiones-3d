@@ -9,23 +9,23 @@ export const categories = [
     accent: "from-cyan-400 to-blue-500"
   },
   {
-    name: "Electronica",
+    name: "Electrónica",
     slug: "electronica",
-    description: "Gadgets, modulos, accesorios inteligentes y soluciones practicas.",
+    description: "Gadgets, módulos, accesorios inteligentes y soluciones prácticas.",
     icon: Cpu,
     accent: "from-blue-400 to-violet-500"
   },
   {
-    name: "Pequenos electrodomesticos",
+    name: "Pequeños electrodomésticos",
     slug: "pequenos-electrodomesticos",
     description: "Productos compactos para mejorar rutinas y espacios cotidianos.",
     icon: Home,
     accent: "from-violet-400 to-fuchsia-500"
   },
   {
-    name: "Diseno personalizado",
+    name: "Diseño personalizado",
     slug: "diseno-personalizado",
-    description: "Modelado, reparacion digital, prototipos y produccion a medida.",
+    description: "Modelado, reparación digital, prototipos y producción a medida.",
     icon: Cuboid,
     accent: "from-emerald-300 to-cyan-400"
   }
@@ -35,7 +35,7 @@ export const featuredProducts = [
   {
     name: "Soporte modular AVM-X",
     slug: "soporte-modular-avm-x",
-    category: "Impresion 3D",
+    category: "Impresión 3D",
     price: "$18.900",
     points: 180,
     description: "Organizador premium impreso en PLA+, ideal para escritorio y setups tech."
@@ -43,7 +43,7 @@ export const featuredProducts = [
   {
     name: "Kit sensores Maker",
     slug: "kit-sensores-maker",
-    category: "Electronica",
+    category: "Electrónica",
     price: "$32.500",
     points: 320,
     description: "Pack inicial para proyectos IoT, prototipos y automatizacion casera."
@@ -51,10 +51,10 @@ export const featuredProducts = [
   {
     name: "Mini selladora compacta",
     slug: "mini-selladora-compacta",
-    category: "Electrodomesticos",
+    category: "Electrodomésticos",
     price: "$24.200",
     points: 240,
-    description: "Solucion portatil para cocina, taller y packaging de pequenos productos."
+    description: "Solución portátil para cocina, taller y packaging de pequeños productos."
   }
 ];
 
