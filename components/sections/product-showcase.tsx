@@ -8,6 +8,7 @@ import { Section } from "@/components/ui/section";
 import { featuredProducts } from "@/lib/constants/mock-data";
 import { addGuestCartItem, openCartDrawer } from "@/lib/stores/cart-store";
 import { addToast } from "@/lib/stores/toast-store";
+import { FavoriteButton } from "@/features/favorites/components/favorite-button";
 import type { CartItem } from "@/types/cart";
 import type { Product } from "@/types/products";
 import Link from "next/link";
@@ -47,7 +48,8 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((product, index) => {
-          const image = "images" in product ? (product as Product).images?.[0] : null;
+          const rawImage = "images" in product ? (product as Product).images?.[0] : null;
+          const image = rawImage?.url ? rawImage : null;
           const name = product.name;
           const category = (product as Product).categoryName ?? ("category" in product ? product.category as string : "AVM");
           const price = "price" in product && typeof product.price === "number" ? formatPrice(product.price) : product.price;
@@ -60,6 +62,11 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
               <div className="relative h-52 shrink-0 bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-transparent">
                 {image && <Image src={image.url} alt={image.alt ?? name} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />}
                 <div className="absolute bottom-3 left-3 avm-badge">{category}</div>
+                {hasRealProducts && (
+                  <div className="absolute right-3 top-3 z-20">
+                    <FavoriteButton productId={product.id} initialIsFavorite={false} isAuthenticated={false} />
+                  </div>
+                )}
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-3">
@@ -68,20 +75,6 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
                 </div>
                 <p className="mt-2 text-sm leading-6 text-[var(--avm-muted)]">{description}</p>
                 <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                  <Link
-                    href={`/productos/${slug}`}
-                    style={{
-                      display: 'block',
-                      fontSize: '11px',
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      color: 'var(--avm-muted)',
-                      marginBottom: '12px',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    Ver detalle →
-                  </Link>
                   <div style={{ display: 'flex', gap: '8px' }}>
                     <Link
                       href={`/productos/${slug}`}

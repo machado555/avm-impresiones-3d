@@ -17,7 +17,7 @@ export async function addFavorite(productId: string) {
     user_id: user.id,
     product_id: productId,
     updated_at: new Date().toISOString()
-  });
+  }, { onConflict: 'user_id,product_id' });
 
   revalidatePath("/favoritos");
   return { ok: !error, message: error ? "No se pudo agregar favorito." : "Agregado a favoritos." };

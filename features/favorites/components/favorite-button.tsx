@@ -40,7 +40,7 @@ export function FavoriteButton({ productId, initialIsFavorite = false, isAuthent
       onClick={handleClick}
       disabled={isPending}
       className={cn(
-        "inline-grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-black/30 text-slate-300 transition hover:text-cyan-200",
+        "inline-grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-black/30 text-slate-300 transition-colors will-change-transform hover:text-cyan-200",
         isFavorite && "text-red-300"
       )}
       aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}

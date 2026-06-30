@@ -60,7 +60,7 @@ export function ProductCard({ name, category, price, points, description, produc
         )}
       </div>
       <div className="p-5">
-        <p className="text-xs uppercase tracking-[0.2em] text-[var(--avm-blue)]">{category ?? "AVM"}</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[var(--avm-blue)]">{category ?? product?.categoryName ?? product?.category?.name ?? "AVM"}</p>
         <h3 className="mt-3 text-lg font-semibold text-white">{displayName}</h3>
         <p className="mt-3 text-sm leading-6 text-[var(--avm-muted)]">{displayDescription}</p>
         <div className="mt-5 flex items-center justify-between text-sm">
