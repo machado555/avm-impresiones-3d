@@ -62,7 +62,7 @@ export function ProductShowcase({ products = [] }: ProductShowcaseProps) {
               <div className="relative h-52 shrink-0 bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-transparent">
                 {image && <Image src={image.url} alt={image.alt ?? name} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />}
                 <div className="absolute bottom-3 left-3 avm-badge">{category}</div>
-                {hasRealProducts && (
+                {'id' in product && (
                   <div className="absolute right-3 top-3 z-20">
                     <FavoriteButton productId={product.id} initialIsFavorite={false} isAuthenticated={false} />
                   </div>
