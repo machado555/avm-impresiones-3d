@@ -4,6 +4,7 @@ import { Outfit, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import { ChatWidget } from "@/features/chat/components/chat-widget";
 import { CartDrawer } from "@/features/cart/components/cart-drawer";
 import { GuestCartStorage } from "@/features/cart/components/guest-cart-storage";
 import { AuthStoreSync } from "@/features/auth/components/auth-store-sync";
@@ -72,6 +73,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <SiteFooter />
           <GuestCartStorage />
           <CartDrawer />
+          <ChatWidget />
           <WhatsAppButton />
         </ToastProvider>
       </body>
