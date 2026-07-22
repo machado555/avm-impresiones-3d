@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Menu, UserRound, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { CartCount } from "@/features/cart/components/cart-count";
 import { FavoritesCount } from "@/features/favorites/components/favorites-count";
 import { siteConfig } from "@/lib/constants/site";
@@ -26,7 +27,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full overflow-x-hidden border-b border-white/[0.04] bg-[#050712]/70 backdrop-blur-2xl">
+    <header className="sticky top-0 z-40 w-full overflow-x-hidden border-b border-white/[0.04] bg-[#050712]/75 shadow-[0_1px_0_rgba(255,255,255,0.02)] backdrop-blur-2xl">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="avm-logo" aria-label="Ir al inicio">
           <img src="/svg/avm-isotipo-color.svg" width="36" height="36" alt="AVM" loading="eager" />
@@ -55,58 +56,34 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-1 sm:gap-0.5">
-          <Link
-            href="/panel"
-            className="avm-btn avm-btn--ghost avm-btn--icon"
-            aria-label="Panel de usuario"
-          >
+          <ButtonLink href="/panel" variant="ghost" icon aria-label="Panel de usuario">
             <UserRound size={18} />
-          </Link>
-          <Link
-            href="/favoritos"
-            className="avm-btn avm-btn--ghost avm-btn--icon"
-            aria-label="Ver favoritos"
-          >
+          </ButtonLink>
+          <ButtonLink href="/favoritos" variant="ghost" icon aria-label="Ver favoritos">
             <FavoritesCount />
-          </Link>
-          <span className="avm-btn avm-btn--ghost avm-btn--icon">
-            <CartCount />
-          </span>
+          </ButtonLink>
+          <CartCount />
           <span className="hidden md:inline-flex">
-            <Link
-              href="/solicitar-diseno"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'var(--avm-blue)',
-                color: 'var(--avm-bg)',
-                fontFamily: 'var(--avm-font-display)',
-                fontSize: '13px',
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                padding: '9px 20px',
-                borderRadius: '6px',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Cotizar diseño
-            </Link>
+            <ButtonLink href="/solicitar-diseno" size="sm">
+              Cotizar diseno
+            </ButtonLink>
           </span>
-          <button
-            className="avm-btn avm-btn--ghost avm-btn--icon md:hidden"
+          <Button
+            type="button"
+            variant="ghost"
+            icon
+            className="md:hidden"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          </Button>
         </div>
       </nav>
 
       {mobileOpen && (
         <div className="border-t border-white/[0.04] md:hidden">
-          <div className="mx-4 mb-4 mt-2 overflow-hidden rounded-[12px] border border-white/[0.06] bg-[rgba(255,255,255,0.03)] backdrop-blur-2xl">
+          <div className="mx-4 mb-4 mt-2 overflow-hidden rounded-[var(--avm-radius-lg)] border border-white/[0.06] bg-[rgba(255,255,255,0.03)] backdrop-blur-2xl">
             {mobileLinks.map((item) => (
               <Link
                 key={item.href}

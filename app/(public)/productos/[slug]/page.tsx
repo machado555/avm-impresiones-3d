@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { RelatedProducts } from "@/components/product/related-products";
 import { StructuredProductData } from "@/components/product/structured-product-data";
@@ -54,91 +55,37 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   };
 
   return (
-    <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 24px" }}>
+    <main className="product-detail-page">
       <StructuredProductData product={product} />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px" }} className="product-detail-grid">
+      <div className="product-detail-grid">
         <div>
           <ProductGallery images={product.images ?? []} productName={product.name} />
         </div>
         <div>
-          <span style={{
-            fontSize: "11px",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "var(--avm-blue)",
-            fontFamily: "var(--avm-font-display)",
-          }}>
+          <span className="product-detail-eyebrow">
             {product.category?.name ?? "Producto destacado"}
           </span>
-          <h1 style={{
-            fontFamily: "var(--avm-font-display)",
-            fontSize: "clamp(22px, 2.5vw, 32px)",
-            fontWeight: 700,
-            color: "#FFFFFF",
-            letterSpacing: "-0.02em",
-            margin: "8px 0 16px",
-          }}>
-            {product.name}
-          </h1>
-          <div style={{
-            fontSize: "36px",
-            fontWeight: 700,
-            fontFamily: "var(--avm-font-display)",
-            color: "#FFFFFF",
-            marginBottom: "24px",
-            letterSpacing: "-0.02em",
-          }}>
+          <h1 className="product-detail-title">{product.name}</h1>
+          <div className="product-detail-price">
             ${product.price.toLocaleString("es-AR")}
             {product.compareAtPrice && (
-              <span style={{
-                fontSize: "16px",
-                fontWeight: 400,
-                color: "var(--avm-muted)",
-                textDecoration: "line-through",
-                marginLeft: "12px",
-              }}>
+              <span className="product-detail-compare">
                 ${product.compareAtPrice.toLocaleString("es-AR")}
               </span>
             )}
           </div>
-          <p style={{
-            color: "var(--avm-muted)",
-            fontSize: "15px",
-            lineHeight: 1.75,
-            marginBottom: "32px",
-            borderTop: "1px solid rgba(255,255,255,0.07)",
-            paddingTop: "24px",
-          }}>
+          <p className="product-detail-description">
             {product.description ?? product.shortDescription}
           </p>
-          <div style={{
-            fontSize: "13px",
-            color: "var(--avm-muted)",
-            marginBottom: "28px",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}>
-            ☆ {product.pointsReward} puntos al comprar
+          <div className="product-detail-points">
+            <span aria-hidden="true">â˜†</span> {product.pointsReward} puntos al comprar
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            <button style={{
-              width: "100%",
-              background: "var(--avm-blue)",
-              color: "var(--avm-bg)",
-              fontFamily: "var(--avm-font-display)",
-              fontSize: "15px",
-              fontWeight: 700,
-              padding: "14px",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              letterSpacing: "0.03em",
-            }}>
+          <div className="product-detail-actions">
+            <Button type="button" full>
               Comprar ahora
-            </button>
-            <div style={{ display: "flex", gap: "8px" }}>
-              <div style={{ flex: 1 }}>
+            </Button>
+            <div className="product-detail-secondary-actions">
+              <div className="flex-1">
                 <AddToCartButton productId={product.id} variantId={selectedVariant?.id ?? null} isAuthenticated={Boolean(user)} guestItem={guestItem} maxStock={maxStock} />
               </div>
               <FavoriteButton productId={product.id} initialIsFavorite={favorite} isAuthenticated={Boolean(user)} />
@@ -147,21 +94,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         </div>
       </div>
 
-      <div style={{
-        marginTop: "64px",
-        paddingTop: "48px",
-        borderTop: "1px solid rgba(255,255,255,0.07)",
-      }}>
-        <h2 style={{
-          fontFamily: "var(--avm-font-display)",
-          fontSize: "20px",
-          fontWeight: 600,
-          color: "#FFFFFF",
-          marginBottom: "20px",
-        }}>
-          Descripción
-        </h2>
-        <div style={{ color: "var(--avm-muted)", fontSize: "15px", lineHeight: 1.8 }}>
+      <div className="product-detail-copy">
+        <h2>Descripcion</h2>
+        <div>
           {product.description ?? product.shortDescription}
         </div>
       </div>

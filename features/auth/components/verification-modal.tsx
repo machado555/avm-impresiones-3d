@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, type FormEvent } from "react";
 import { Mail, Loader2, ArrowLeft } from "lucide-react";
@@ -78,7 +78,7 @@ export function VerificationModal({ email, onVerified, onBack }: VerificationMod
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-      <div className="glass w-full max-w-md rounded-[12px] border border-white/15 p-8">
+      <div className="glass w-full max-w-md rounded-[var(--avm-radius-lg)] border border-white/15 p-8">
         <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-cyan-300/20 to-violet-500/20">
           <Mail className="text-cyan-200" size={26} />
         </div>
@@ -98,7 +98,7 @@ export function VerificationModal({ email, onVerified, onBack }: VerificationMod
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className="h-12 w-11 rounded-[8px] border border-white/10 bg-white/[0.07] text-center text-lg font-semibold text-white outline-none transition focus:border-cyan-300/60"
+                className="avm-input h-12 w-11 p-0 text-center text-lg font-semibold"
                 autoComplete="one-time-code"
               />
             ))}
@@ -114,12 +114,12 @@ export function VerificationModal({ email, onVerified, onBack }: VerificationMod
           </Button>
         </form>
         <div className="mt-4 flex items-center justify-between">
-          <button type="button" onClick={onBack} className="inline-flex items-center gap-1 text-sm text-slate-400 hover:text-white transition">
+          <Button type="button" variant="ghost" size="sm" onClick={onBack}>
             <ArrowLeft size={14} /> Volver
-          </button>
-          <button type="button" onClick={handleResend} className="text-sm text-cyan-200 hover:text-cyan-100 transition">
+          </Button>
+          <Button type="button" variant="ghost" size="sm" onClick={handleResend}>
             Reenviar codigo
-          </button>
+          </Button>
         </div>
       </div>
     </div>

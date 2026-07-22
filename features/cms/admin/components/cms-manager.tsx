@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { Upload, Trash2, Save } from "lucide-react";
@@ -85,7 +85,7 @@ function ImageUploader({ section, imgKey, current }: { section: string; imgKey: 
           <Button type="button" onClick={async () => {
             const r = await deleteCmsImage(current.id);
             addToast(r.ok ? "success" : "error", r.message);
-          }} className="bg-red-400/10 text-red-300 hover:bg-red-400/20" style={{ background: undefined }}>
+          }} variant="danger">
             <Trash2 size={14} />
           </Button>
         )}
@@ -168,3 +168,4 @@ export function CmsManager({ images, texts }: CmsManagerProps) {
     </div>
   );
 }
+

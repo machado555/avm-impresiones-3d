@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Outfit, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -29,13 +29,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001"),
   title: {
-    default: "AVM — Digital Manufacturing",
+    default: "AVM â€” Digital Manufacturing",
     template: "%s | AVM"
   },
   description:
-    "De la pantalla a tus manos. Fabricación digital, objetos tech y piezas a medida con precisión de ingeniería.",
+    "De la pantalla a tus manos. FabricaciÃ³n digital, objetos tech y piezas a medida con precisiÃ³n de ingenierÃ­a.",
   openGraph: {
-    title: "AVM — Digital Manufacturing",
+    title: "AVM â€” Digital Manufacturing",
     description: "De la pantalla a tus manos.",
     type: "website",
     locale: "es_AR",
@@ -62,7 +62,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <head>
         <meta name="color-scheme" content="dark" />
         <meta name="theme-color" content="#080C14" />
-        <link rel="stylesheet" href="/css/avm-tokens.css" />
         <link rel="stylesheet" href="/css/avm-logo.css" />
       </head>
       <body className={`${outfit.variable} ${inter.variable}`}>
@@ -80,3 +79,4 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
+

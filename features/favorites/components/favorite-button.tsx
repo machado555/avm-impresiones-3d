@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState, useTransition } from "react";
 import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { toggleFavoriteProductId } from "@/lib/stores/favorites-store";
 import { toggleFavorite } from "@/features/favorites/actions/toggle-favorite";
 import { cn } from "@/lib/utils/cn";
@@ -35,17 +36,16 @@ export function FavoriteButton({ productId, initialIsFavorite = false, isAuthent
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      icon
       onClick={handleClick}
       disabled={isPending}
-      className={cn(
-        "inline-grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-black/30 text-slate-300 transition-colors will-change-transform hover:text-cyan-200",
-        isFavorite && "text-red-300"
-      )}
+      className={cn("rounded-full border border-white/10 bg-black/30 text-slate-300 hover:text-cyan-200", isFavorite && "text-red-300")}
       aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
     >
       <Heart size={18} fill={isFavorite ? "currentColor" : "none"} />
-    </button>
+    </Button>
   );
 }

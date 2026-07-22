@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import { Button, ButtonLink } from "@/components/ui/button";
 import { AdminShell } from "@/features/admin/components/admin-shell";
 import { AdminSectionHeader } from "@/features/admin/components/admin-section-header";
 import { requireCapability } from "@/features/auth/guards/require-role";
@@ -16,58 +16,55 @@ export default async function AdminProductsPage() {
   return (
     <AdminShell>
       <AdminSectionHeader title="Productos" description="Gestiona el catalogo de productos." />
-      <Link
-        href="/admin/productos/nuevo"
-        className="mb-6 inline-flex items-center rounded-[8px] bg-cyan-400 px-5 py-3 text-sm font-medium text-black transition hover:bg-cyan-300"
-      >
+      <ButtonLink href="/admin/productos/nuevo" className="mb-6">
         + Nuevo producto
-      </Link>
-      <div className="overflow-x-auto rounded-[8px] border border-white/10">
-        <table className="w-full text-sm text-slate-300">
-          <thead className="border-b border-white/10 bg-white/[0.04] text-left text-xs uppercase tracking-wider text-slate-500">
+      </ButtonLink>
+      <div className="avm-table">
+        <table>
+          <thead>
             <tr>
-              <th className="px-4 py-3">Imagen</th>
-              <th className="px-4 py-3">Nombre</th>
-              <th className="px-4 py-3">Categoría</th>
-              <th className="px-4 py-3">Precio</th>
-              <th className="px-4 py-3">Oferta</th>
-              <th className="px-4 py-3">Estado</th>
-              <th className="px-4 py-3">Puntos</th>
-              <th className="px-4 py-3">Acciones</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+              <th>Oferta</th>
+              <th>Estado</th>
+              <th>Puntos</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/10">
             {products.map((product) => (
-              <tr key={product.id} className="transition hover:bg-white/[0.02]">
-                <td className="px-4 py-3">
+              <tr key={product.id}>
+                <td>
                   {product.images?.[0] ? (
-                    <img src={product.images[0].url} alt="" className="h-10 w-10 rounded-[4px] object-cover" />
+                    <img src={product.images[0].url} alt="" className="h-10 w-10 rounded-[var(--avm-radius-xs)] object-cover" />
                   ) : (
-                    <div className="h-10 w-10 rounded-[4px] bg-white/10" />
+                    <div className="h-10 w-10 rounded-[var(--avm-radius-xs)] bg-white/10" />
                   )}
                 </td>
-                <td className="px-4 py-3 font-medium text-white">{product.name}</td>
-                <td className="px-4 py-3 text-xs">{product.categoryId?.slice(0, 8) ?? "—"}</td>
-                <td className="px-4 py-3">{formatPrice(product.price)}</td>
-                <td className="px-4 py-3">{product.compareAtPrice ? formatPrice(product.compareAtPrice) : "—"}</td>
-                <td className="px-4 py-3">
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                    product.status === "active" ? "bg-emerald-400/10 text-emerald-300" :
-                    product.status === "inactive" ? "bg-red-400/10 text-red-300" :
-                    "bg-slate-400/10 text-slate-400"
+                <td className="font-medium text-white">{product.name}</td>
+                <td className="text-xs">{product.categoryId?.slice(0, 8) ?? "-"}</td>
+                <td>{formatPrice(product.price)}</td>
+                <td>{product.compareAtPrice ? formatPrice(product.compareAtPrice) : "-"}</td>
+                <td>
+                  <span className={`avm-status-badge ${
+                    product.status === "active" ? "avm-status-badge--success" :
+                    product.status === "inactive" ? "avm-status-badge--danger" :
+                    ""
                   }`}>
                     {product.status}
                   </span>
                 </td>
-                <td className="px-4 py-3">{product.pointsReward ?? 0}</td>
-                <td className="px-4 py-3">
+                <td>{product.pointsReward ?? 0}</td>
+                <td>
                   <div className="flex items-center gap-2">
-                    <Link href={`/admin/productos/${product.id}`} className="rounded px-2 py-1 text-xs text-cyan-200 hover:bg-white/10">Editar</Link>
+                    <ButtonLink href={`/admin/productos/${product.id}`} variant="ghost" size="sm">Editar</ButtonLink>
                     <form action={async () => { await duplicateProductAction(product.id); }}>
-                      <button type="submit" className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-white/10">Duplicar</button>
+                      <Button type="submit" variant="ghost" size="sm">Duplicar</Button>
                     </form>
                     <form action={async () => { await deleteProductAction(product.id); }}>
-                      <button type="submit" className="rounded px-2 py-1 text-xs text-red-300 hover:bg-white/10" onClick={(e) => { if (!confirm("Archivar producto?")) e.preventDefault(); }}>Archivar</button>
+                      <Button type="submit" variant="danger" size="sm">Archivar</Button>
                     </form>
                   </div>
                 </td>
@@ -75,7 +72,7 @@ export default async function AdminProductsPage() {
             ))}
             {products.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-8 text-center text-slate-500">No hay productos.</td>
+                <td colSpan={8} className="py-8 text-center text-slate-500">No hay productos.</td>
               </tr>
             )}
           </tbody>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useActionState, useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -87,7 +87,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
     }
   }
 
-  const inputClass = "rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60";
+  const inputClass = "avm-input";
   const labelClass = "flex flex-col gap-1";
   const labelTextClass = "text-xs text-slate-400 px-1";
 
@@ -106,7 +106,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
         </div>
 
         <label className={labelClass}>
-          <span className={labelTextClass}>Descripción</span>
+          <span className={labelTextClass}>DescripciÃ³n</span>
           <textarea className={`${inputClass} min-h-24 resize-y`} name="description" placeholder="Descripcion" defaultValue={product?.description ?? ""} />
         </label>
 
@@ -149,7 +149,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
             <CustomSelect options={statusOptions} value={status} onChange={setStatus} placeholder="Estado" />
           </label>
           <label className={labelClass}>
-            <span className={labelTextClass}>Categoría</span>
+            <span className={labelTextClass}>CategorÃ­a</span>
             <CustomSelect
               options={[{ value: "", label: "Sin categoria" }, ...categories.map((c) => ({ value: c.id, label: c.name }))]}
               value={category}
@@ -180,7 +180,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
             </Button>
           </>
         ) : (
-          <p className="text-xs text-slate-500">Completá los datos y guardá para poder subir imágenes.</p>
+          <p className="text-xs text-slate-500">CompletÃ¡ los datos y guardÃ¡ para poder subir imÃ¡genes.</p>
         )}
         <div className="grid gap-3">
           {images.map((img) => (
@@ -189,15 +189,15 @@ export function ProductForm({ product, categories }: ProductFormProps) {
               <span className="flex-1 truncate text-xs text-slate-400">{img.url.split("/").pop()}</span>
               <div className="flex gap-1">
                 {img.sortOrder !== 0 && img.id && (
-                  <button type="button" onClick={() => handleSetMain(img.id!)} className="rounded p-1 text-slate-500 hover:text-amber-300" title="Principal">
+                  <Button type="button" variant="ghost" icon onClick={() => handleSetMain(img.id!)} className="h-8 min-h-8 w-8 p-0 text-slate-500 hover:text-amber-300" title="Principal">
                     <Star size={14} />
-                  </button>
+                  </Button>
                 )}
                 {img.sortOrder === 0 && <Star size={14} className="text-amber-300" />}
                 {img.id && (
-                  <button type="button" onClick={() => handleDeleteImage(img.id!, img.url)} className="rounded p-1 text-slate-500 hover:text-red-300" title="Eliminar">
+                  <Button type="button" variant="ghost" icon onClick={() => handleDeleteImage(img.id!, img.url)} className="h-8 min-h-8 w-8 p-0 text-slate-500 hover:text-red-300" title="Eliminar">
                     <Trash2 size={14} />
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
@@ -207,3 +207,5 @@ export function ProductForm({ product, categories }: ProductFormProps) {
     </div>
   );
 }
+
+
